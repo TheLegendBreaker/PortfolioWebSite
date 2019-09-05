@@ -1,0 +1,31 @@
+<div class="wrap">
+  <button
+    class="primary-button teal resume"
+    [routerLink]="['/portfolio/resume']"
+  >
+    <span class="teal basic">R</span>
+  </button>
+  <button class="primary-button red home" [routerLink]="['']">
+    <span class="red basic">H</span>
+  </button>
+  <main>
+    <app-dedicated-reel (navPress)="scroll($event)"></app-dedicated-reel>
+  </main>
+  <article>
+    <app-dedicated-display-content
+      [direction]="direction"
+    ></app-dedicated-display-content>
+    <aside>
+      <div class="stacked top">
+        <button class="primary-button blue">
+          <span class="blue basic">G</span>
+        </button>
+      </div>
+      <div class="stacked">
+        <button class="primary-button blue">
+          <span class="blue basic">C</span>
+        </button>
+      </div>
+    </aside>
+  </article>
+</div>

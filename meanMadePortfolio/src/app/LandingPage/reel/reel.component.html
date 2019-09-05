@@ -1,0 +1,21 @@
+<div (click)="scroll('Up')" class="direction-button-listener">
+  <button class="up-button direction-button">up</button>
+</div>
+<div class="display-container">
+  <div id="screen1" [@screen1]="screen" [routerLink]="['project/', display[0]]">
+    screen 1
+    <img src="{{ display[1] }}" alt="{{ display[1] }}" />
+    <!-- <app-display[1]-project></app-display[1]-project> -->
+  </div>
+
+  <div id="screen2" [@screen2]="screen" [routerLink]="['project/', display[0]]">
+    screen 2
+    <img src="{{ display[1] }}" alt="{{ display[1] }}" />
+    <!-- <app-display-project></app-display-project> -->
+  </div>
+</div>
+<div (click)="scroll('Down')" class="direction-button-listener">
+  <button class="down-button direction-button">
+    down
+  </button>
+</div>

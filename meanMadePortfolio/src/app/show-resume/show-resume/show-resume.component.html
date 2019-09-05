@@ -1,0 +1,20 @@
+<div class="wrap">
+  <nav>
+    <div>
+      <button id="send-resume">
+        <b class="teal">email yourself a copy</b>
+      </button>
+    </div>
+    <button class="primary-button teal" [routerLink]="['/portfolio/contact']">
+      <span class="basic teal contact">C</span>
+    </button>
+    <button class="primary-button red home" [routerLink]="['']">
+      <span class="basic red">
+        H
+      </span>
+    </button>
+  </nav>
+  <article>
+    <app-resume></app-resume>
+  </article>
+</div>

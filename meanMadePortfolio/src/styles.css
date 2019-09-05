@@ -1,0 +1,102 @@
+* {
+  /* outline: 3px dotted aqua; */
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wrap {
+  width: 1500px;
+  height: 900px;
+
+  background-color: #ffdd55;
+  border: black solid 15px;
+}
+
+/* set up resume button look  */
+#resume-button {
+  outline: none;
+  display: inline-block;
+  width: 215px;
+  height: 120px;
+  background-color: #48746b;
+  text-align: left;
+
+  border: black solid 15px;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  padding-right: 40px;
+}
+.resume-button {
+  outline: none;
+  padding: 10px 20px;
+
+  border-radius: 5px;
+  border: black solid 15px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #87decd;
+}
+/* resume button mechanics */
+button#resume-button:active {
+  text-align: center;
+  padding: 0;
+}
+button#resume-button:hover {
+  color: white;
+}
+/* set up the primary button looks */
+/* this class is used with a color class to style a primary button*/
+.primary-button {
+  outline: none;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+
+  border-radius: 50%;
+  color: white;
+  border: black solid 15px;
+  background-color: none;
+}
+.primary-button span {
+  position: relative;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  padding: 1.5px 5px;
+
+  border: black solid 15px;
+  font-size: 18px;
+  border-radius: 50%;
+}
+/* set up mechanics for the primary buttons */
+button.primary-button:active {
+  border: none;
+  outline: none;
+}
+button.primary-button:hover span.basic {
+  font-weight: bolder;
+  color: #87decd;
+}
+button.primary-button:hover span.basic.teal {
+  font-weight: bolder;
+  color: black;
+}
+button.primary-button:active span.basic {
+  bottom: 0;
+  right: 0;
+
+  font-weight: bold;
+  color: white;
+  background-color: #ff5555;
+}
+/* avaialble colors for primary buttons */
+.blue {
+  background: #0b6af8;
+}
+.teal {
+  background: #87decd;
+  color: black;
+}
+.red {
+  background: #ff5555;
+}

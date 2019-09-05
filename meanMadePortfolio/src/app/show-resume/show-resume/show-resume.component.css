@@ -1,0 +1,56 @@
+nav {
+  padding: 20px 135px;
+  padding-top: 35px;
+}
+
+nav div {
+  display: inline;
+}
+/* set up email resume button */
+#send-resume {
+  display: inline-block;
+  width: 220px;
+  height: 100px;
+  margin-right: 67%;
+
+  text-align: left;
+  border: black solid 15px;
+  background-color: #48746b;
+  border-radius: 20px;
+  outline: none;
+}
+#send-resume b {
+  position: relative;
+  padding: 7% 8%;
+  bottom: 15px;
+
+  border: black solid 15px;
+  border-left: black solid 2px;
+  border-top: black solid 2px;
+}
+button#send-resume:active {
+  text-align: center;
+  padding: 0;
+}
+
+button#send-resume:active b {
+  border: black solid 12px;
+  bottom: 0;
+}
+.home {
+  margin-left: 55px;
+}
+.contact {
+  color: black;
+}
+button.contact:hover span.contact {
+  color: black;
+}
+article {
+  height: 600px;
+  width: 1200px;
+  margin: 0 auto;
+
+  background-color: white;
+  border: #87decd solid 15px;
+}

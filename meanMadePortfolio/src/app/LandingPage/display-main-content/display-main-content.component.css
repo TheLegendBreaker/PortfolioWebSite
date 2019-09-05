@@ -1,0 +1,27 @@
+article {
+  display: inline-block;
+  height: 150px;
+  width: 450px;
+  padding: 30px;
+  overflow: hidden;
+
+  border-radius: 80px;
+  border: black solid 15px;
+  /* background-color: alpha; */
+  background-color: #80b3ff;
+}
+
+section {
+  position: relative;
+  text-align: left;
+}
+
+.screen1 {
+  bottom: 0;
+  right: 0;
+}
+
+.screen2 {
+  bottom: 80px;
+  right: 500px;
+}

@@ -1,0 +1,30 @@
+<div class="wrap">
+  <section>
+    <div id="resume-button-base">
+      <button id="resume-button" [routerLink]="['resume']">
+        <span class="resume-button">
+          resume
+        </span>
+      </button>
+    </div>
+    <div id="main-content">
+      <app-display-main-content [direction]="direction">
+      </app-display-main-content>
+    </div>
+    <nav>
+      <button class="primary-button blue">
+        <span class="blue basic">G</span>
+      </button>
+      <button class="primary-button blue">
+        <span class="blue basic">L</span>
+      </button>
+      <button class="primary-button blue">
+        <span class="blue basic">C</span>
+      </button>
+    </nav>
+  </section>
+  <aside>
+    <!-- also use an output main-content's content -->
+    <app-reel (navPress)="scroll($event)"></app-reel>
+  </aside>
+</div>

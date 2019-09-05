@@ -1,0 +1,55 @@
+main {
+  margin-bottom: 0;
+}
+
+.display-container {
+  height: 550px;
+  width: 1150px;
+  text-align: center;
+  overflow: hidden;
+}
+
+#screen1 {
+  display: inline-block;
+  width: 1100px;
+  height: 500px;
+
+  position: relative;
+
+  background-color: white;
+  border: black solid 15px;
+}
+#screen2 {
+  display: inline-block;
+  width: 1100px;
+  height: 500px;
+
+  position: relative;
+  bottom: -30px;
+
+  background-color: white;
+  border: black solid 15px;
+}
+
+div {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+button {
+  width: 120px;
+  height: 350px;
+
+  background-color: #0066ff;
+  outline: none;
+  border: none;
+}
+.right-button {
+  clip-path: polygon(13% 0, 100% 50%, 11% 100%, 0 97%, 82% 50%, 0 3%);
+}
+.left-button {
+  clip-path: polygon(99% 3%, 18% 50%, 100% 97%, 84% 100%, 0 50%, 85% 0);
+}
+div.direction-button-listener:active button.direction-button {
+  background-color: #ffaaaa;
+}
