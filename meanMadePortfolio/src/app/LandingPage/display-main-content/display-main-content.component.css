@@ -3,7 +3,7 @@ article {
   height: 150px;
   width: 450px;
   padding: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   border-radius: 80px;
   border: black solid 15px;
@@ -15,13 +15,16 @@ section {
   position: relative;
   text-align: left;
 }
-
+.screen {
+  position: relative;
+  margin: 20px;
+}
 .screen1 {
   bottom: 0;
   right: 0;
 }
 
 .screen2 {
-  bottom: 80px;
+  bottom: 20px;
   right: 500px;
 }
