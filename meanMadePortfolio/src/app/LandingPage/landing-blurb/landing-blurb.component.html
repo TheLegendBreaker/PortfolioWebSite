@@ -1,15 +1,17 @@
 <article>
   <section class="screen1" [@screen1]="direction">
     <h3 class="screen">{{ display[1] }}</h3>
-    <h1 *ngIf="display[3]" class="prefix">{{ display[2] }}</h1>
-    <h1 *ngIf="display[3]">{{ display[3] }}</h1>
-    <p *ngIf="!display[3]" class="screen">{{ display[2] }}</p>
+    <div *ngIf="display[0] === null">
+      <h1 class="prefix">{{ display[2] }}</h1>
+      <h1>{{ display[3] }}</h1>
+    </div>
+    <p *ngIf="display[0] !== null" class="screen">{{ display[2] }}</p>
     {{ direction }}
   </section>
 
   <section class="screen2" [@screen2]="direction">
-    <h3 class="screen">{{ display[1] }}</h3>
-    <p class="screen">{{ display[2] }}</p>
+    <h3 class="screen">{{ que[1] }}</h3>
+    <p class="screen">{{ que[2] }}</p>
     <!-- <p class="screen">{{ display[2] }}</p> -->
     {{ direction }}
     screen 2

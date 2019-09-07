@@ -16,6 +16,10 @@ export class ProjectService {
   que: DLL.LandingNode[] = [];
   display: DLL.LandingNode;
 
+  screen1 = true;
+  lastDirection: string;
+  direction: string;
+
   constructor() {
     this.dll = this.landingDummyDLL();
   }
@@ -92,10 +96,13 @@ export class ProjectService {
   }
 
   scroll(direction: string): void {
+    this.screen1 = this.switchScreen(direction);
     this.rotateLandingReel(direction);
     this.chooseBlurb();
     this.chooseImage();
     this.chooseLinks();
+    this.chooseScreen(direction);
+    this.lastDirection = direction;
   }
 
   showScroll(direction: string): void {
@@ -105,6 +112,22 @@ export class ProjectService {
     this.chooseLinks();
   }
 
+  private chooseScreen(direction: string) {
+    if (this.screen1) {
+      this.screen1 = false;
+    } else {
+      this.screen1 = true;
+    }
+  }
+  private switchScreen(direction: string): boolean {
+    if (direction === `Up` && this.lastDirection === `Down`) {
+      return true;
+    }
+    if (direction === 'Down' && this.lastDirection === 'Up') {
+      return true;
+    }
+    return this.screen1;
+  }
   private landingDummyProj(): DLL.LandingNode[] {
     const projects: DLL.LandingNode[] = [];
     for (let i = 0; i < 4; i++) {

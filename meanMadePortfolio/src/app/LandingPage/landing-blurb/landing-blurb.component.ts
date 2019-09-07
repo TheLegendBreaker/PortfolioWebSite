@@ -10,9 +10,9 @@ import {
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
-  selector: 'app-display-main-content',
-  templateUrl: './display-main-content.component.html',
-  styleUrls: ['./display-main-content.component.css'],
+  selector: 'app-landing-blurb',
+  templateUrl: './landing-blurb.component.html',
+  styleUrls: ['./landing-blurb.component.css'],
   animations: [
     trigger('screen1', [
       // end up in the qued position
@@ -103,10 +103,10 @@ import { ProjectService } from 'src/app/services/project.service';
     ]),
   ],
 })
-export class DisplayMainContentComponent implements OnInit {
+export class LandingBlurbComponent implements OnInit {
   @Input() direction: any;
-  display: any[];
-  que: any[];
+  display: any[] = [];
+  que: any[] = [];
   constructor(private readonly projServ: ProjectService) {}
 
   ngOnInit() {
@@ -114,8 +114,15 @@ export class DisplayMainContentComponent implements OnInit {
     this.display = [null, `welcome`, `My name is`, `Hector G. Diaz`, true];
     // get the dsiplay to hold the emitted info so it can be accessed in the html
     this.projServ.displayBlurb$.subscribe(blurb => {
-      this.que = this.display;
-      this.display = blurb;
+      console.log('here is the service screen', this.projServ.screen1);
+      if (this.projServ.screen1) {
+        this.display = blurb;
+      } else {
+        this.que = blurb;
+        console.log('Else triggerd', this.que);
+      }
+      // this.que = this.display;
+      // this.display = blurb;
     });
   }
 }
