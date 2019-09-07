@@ -138,12 +138,9 @@ export class ReelComponent implements OnInit {
     // set up display with welcome information.
     this.display = [
       null,
-      ` I am an artist making a career shift into software development`,
-      `My objective is to find opportunity to use my skills to meet and exceed expectations.`,
-      `In my last two postions I not only met the company's needs but my abilities to learn quickly and problem solve helped the company expand, sometimes into new areas. Mind, those postions were Ceramic Slip Pouring Facility Manager and Cabinet Finishing Shop Manager.`,
-      `This is a career change. I haven't written code in a professional environment. I have been writiing code for over a year with independent study, followed by a fourteen week coding bootcamp, at Coding Dojo. I learned three full stacks, MEAN, Django, and Spring Boot.`,
-      `I may not have in-the-field expierence, but I do have the basic knowledge, and I have proven that given an opportunity at the right company I can exceed company expectations.`,
-      `Lets get together and see if  we would be a good fit for each other.`,
+      `I am a problem solver who is consistently improving the systems I work with. I have brought multiple companies further with these skills. this is my portfolio website and its job is to give working of these skills.`,
+      `I have a background in graphic design as freelancer. I have managed independent contracts and produced work that exceeds expectations within a deadline. My graphic design experience also gives me a  creative perspective that helps me rethink challenges and come up with innovative solutions.`,
+      `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
     ];
 
     this.projServ.displayImage$.subscribe(image => {

@@ -33,3 +33,13 @@ p {
   bottom: 20px;
   right: 500px;
 }
+
+/* format welcome message */
+h1 {
+  font-weight: lighter;
+  font-size: 42px;
+  margin-left: 100px;
+}
+.prefix {
+  font-size: 32px;
+}

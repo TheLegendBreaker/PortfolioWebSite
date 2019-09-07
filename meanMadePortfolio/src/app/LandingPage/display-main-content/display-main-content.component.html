@@ -1,9 +1,10 @@
 <article>
   <section class="screen1" [@screen1]="direction">
     <h3 class="screen">{{ display[1] }}</h3>
-    <p class="screen">{{ display[2] }}</p>
+    <h1 *ngIf="display[3]" class="prefix">{{ display[2] }}</h1>
+    <h1 *ngIf="display[3]">{{ display[3] }}</h1>
+    <p *ngIf="!display[3]" class="screen">{{ display[2] }}</p>
     {{ direction }}
-    screen 1
   </section>
 
   <section class="screen2" [@screen2]="direction">

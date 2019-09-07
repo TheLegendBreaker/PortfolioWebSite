@@ -111,7 +111,7 @@ export class DisplayMainContentComponent implements OnInit {
 
   ngOnInit() {
     // set up default message.
-    this.display = [null, null];
+    this.display = [null, `welcome`, `My name is`, `Hector G. Diaz`, true];
     // get the dsiplay to hold the emitted info so it can be accessed in the html
     this.projServ.displayBlurb$.subscribe(blurb => {
       this.que = this.display;
