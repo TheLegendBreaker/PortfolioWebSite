@@ -1,9 +1,9 @@
 article {
   display: inline-block;
-  height: 150px;
+  height: 180px;
   width: 450px;
   padding: 30px;
-  /* overflow: hidden; */
+  overflow: hidden;
 
   border-radius: 80px;
   border: black solid 15px;
@@ -15,12 +15,17 @@ section {
   position: relative;
   text-align: left;
 }
+
+p {
+  height: 75px;
+  overflow: hidden;
+}
 .screen {
   position: relative;
   margin: 20px;
 }
 .screen1 {
-  bottom: 0;
+  bottom: 15px;
   right: 0;
 }
 

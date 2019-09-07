@@ -61,8 +61,8 @@ import { ProjectService } from 'src/app/services/project.service';
       ]),
     ]),
     trigger('screen2', [
-      state('UpToQue', style({ right: '0', bottom: '96px' })),
-      state('DownToQue', style({ right: '0', bottom: '96px' })),
+      state('UpToQue', style({ right: '0', bottom: '190.5px' })),
+      state('DownToQue', style({ right: '0', bottom: '190.5px' })),
 
       transition('* => UpToDisplay', [
         animate(
@@ -107,14 +107,12 @@ export class DisplayMainContentComponent implements OnInit {
   @Input() direction: any;
   display: any[];
   que: any[];
-  project = {
-    title: 'project1',
-    info:
-      'this is my project. here are the things I did. I used these technologies. I over came these challenges. here are some of my solution',
-  };
   constructor(private readonly projServ: ProjectService) {}
 
   ngOnInit() {
+    // set up default message.
+    this.display = [null, null];
+    // get the dsiplay to hold the emitted info so it can be accessed in the html
     this.projServ.displayBlurb$.subscribe(blurb => {
       this.que = this.display;
       this.display = blurb;

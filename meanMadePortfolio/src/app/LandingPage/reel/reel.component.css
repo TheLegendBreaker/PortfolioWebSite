@@ -62,3 +62,14 @@ div.direction-button-listener:active button.direction-button {
   border-radius: 3px;
   border: black solid 15px;
 }
+
+p {
+  width: 550px;
+  display: inline-block;
+  padding: 8px 0px;
+}
+
+#elevator-pitch {
+  margin: 0px auto;
+  margin-top: 20px;
+}

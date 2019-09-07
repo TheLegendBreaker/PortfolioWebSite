@@ -3,14 +3,29 @@
 </div>
 <div class="display-container">
   <div id="screen1" [@screen1]="screen" [routerLink]="['project/', display[0]]">
-    screen 1
-    <img src="{{ display[1] }}" alt="{{ display[1] }}" />
+    <p *ngIf="!display[2]">screen 1</p>
+    <img *ngIf="!display[2]" src="{{ display[1] }}" alt="{{ display[1] }}" />
     <!-- <app-display[1]-project></app-display[1]-project> -->
   </div>
 
   <div id="screen2" [@screen2]="screen" [routerLink]="['project/', display[0]]">
-    screen 2
-    <img src="{{ display[1] }}" alt="{{ display[1] }}" />
+    <p *ngIf="!display[2]">screen 2</p>
+    <div id="elevator-pitch" *ngIf="display[2]">
+      <p>{{ display[1] }}</p>
+      <br />
+      <p>{{ display[2] }}</p>
+      <br />
+      <p>{{ display[3] }}</p>
+      <br />
+      <p>{{ display[4] }}</p>
+      <br />
+      <p>{{ display[5] }}</p>
+      <br />
+      <p>
+        <b>{{ display[6] }}</b>
+      </p>
+    </div>
+    <img *ngIf="!display[2]" src="{{ display[1] }}" alt="{{ display[1] }}" />
     <!-- <app-display-project></app-display-project> -->
   </div>
 </div>
