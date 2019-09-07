@@ -123,14 +123,14 @@ import {
 export class ReelComponent implements OnInit {
   // property to handle state;
   screen: string;
-  // set up a property to display the project blurb
-  blurb: string;
   // a que property to keep track of what state should be next
   que: any[] = [];
 
   display: any[] = [];
-  // an [] of displayProjects to hang on to  the que info
 
+  screen1 = true;
+  link: any[] = [];
+  // eventualy refactor so this is handled by the project service
   @Output() navPress = new EventEmitter();
 
   constructor(private readonly projServ: ProjectService) {}
@@ -143,15 +143,30 @@ export class ReelComponent implements OnInit {
       `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
     ];
 
+    this.link = [`resume`];
     this.projServ.displayImage$.subscribe(image => {
-      this.que = this.display;
-      this.display = image;
+      // make sure the correct prop gets the newly displaying project
+      if (this.screen1) {
+        this.display = image;
+        this.screen1 = false;
+      } else {
+        this.que = image;
+        this.link = [`project/`, this.que[0]];
+        this.screen1 = true;
+      }
     });
   }
-
+  // helper function to help specific transitions of state work as expected
+  private isSwitched(direction: string): void {
+    if (this.screen === `slideUptoQue` && direction === `Down`) {
+      this.screen1 = true;
+    } else if (this.screen === `slideDowntoQue` && direction === `Up`) {
+      this.screen1 = true;
+    }
+  }
   scroll(direction: string): void {
-    this.projServ.scroll(direction);
     console.log('here is the display', this.display);
+    this.isSwitched(direction);
     // set of conditons to figure out what to change state to
     if (this.screen === `slide${direction}toQue`) {
       this.screen = `slide${direction}toDisplay`;
@@ -163,6 +178,7 @@ export class ReelComponent implements OnInit {
       this.screen = `slide${direction}toQue`;
       this.navPress.emit(`${direction}ToDisplay`);
     }
+    this.projServ.scroll(direction);
     console.log('here is the screen2', this.screen);
   }
 }

@@ -1,5 +1,5 @@
+import { ProjectService } from 'src/app/services/project.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { compileDirectiveFromRender2 } from '@angular/compiler/src/render3/view/compiler';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,9 +12,15 @@ export class LandingPageComponent implements OnInit {
   // property for main content animation binding
   direction: any;
 
-  constructor() {}
+  links: any[] = [];
+  constructor(private readonly projServ: ProjectService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.links = [`https://github.com/TheLegendBreaker`];
+    this.projServ.useLinks$.subscribe(links => {
+      this.links = links;
+    });
+  }
 
   scroll(direction: Event): void {
     this.direction = direction;

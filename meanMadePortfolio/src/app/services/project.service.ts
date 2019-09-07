@@ -9,8 +9,10 @@ export class ProjectService {
   private dll: DLL.LandingDLL;
   private imageSource = new Subject<any[]>();
   private blurbSource = new Subject<any[]>();
+  private linkSource = new Subject<any[]>();
   displayImage$ = this.imageSource.asObservable();
   displayBlurb$ = this.blurbSource.asObservable();
+  useLinks$ = this.linkSource.asObservable();
   que: DLL.LandingNode[] = [];
   display: DLL.LandingNode;
 
@@ -64,7 +66,7 @@ export class ProjectService {
       return;
     }
 
-    if (direction === 'UP') {
+    if (direction === 'Up') {
       this.display = this.que[1];
       this.que[0] = this.display.previous;
       this.que[1] = this.display.next;
@@ -78,7 +80,9 @@ export class ProjectService {
   private chooseImage() {
     this.imageSource.next([this.display.id, this.display.image]);
   }
-
+  private chooseLinks() {
+    this.linkSource.next(this.display.links);
+  }
   private chooseBlurb() {
     this.blurbSource.next([
       this.display.id,
@@ -91,12 +95,14 @@ export class ProjectService {
     this.rotateLandingReel(direction);
     this.chooseBlurb();
     this.chooseImage();
+    this.chooseLinks();
   }
 
   showScroll(direction: string): void {
     this.rotateShowReel(direction);
     this.chooseBlurb();
     this.chooseImage();
+    this.chooseLinks();
   }
 
   private landingDummyProj(): DLL.LandingNode[] {
