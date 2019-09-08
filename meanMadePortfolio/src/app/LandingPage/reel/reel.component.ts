@@ -146,32 +146,26 @@ export class ReelComponent implements OnInit {
     this.link = [`resume`];
     this.projServ.displayImage$.subscribe(image => {
       // make sure the correct prop gets the newly displaying project
-      if (this.screen1) {
+      if (this.projServ.screen1) {
         this.display = image;
-        this.screen1 = false;
       } else {
         this.que = image;
         this.link = [`project/`, this.que[0]];
-        this.screen1 = true;
       }
     });
   }
   // helper function to help specific transitions of state work as expected
-  private isSwitched(direction: string): void {
-    if (this.screen === `slideUptoQue` && direction === `Down`) {
-      this.screen1 = true;
-    } else if (this.screen === `slideDowntoQue` && direction === `Up`) {
-      this.screen1 = true;
-    }
-  }
   scroll(direction: string): void {
-    console.log('here is the display', this.display);
-    this.isSwitched(direction);
+    const otherWay: object = { Up: 'Down', Down: 'Up' };
+
     // set of conditons to figure out what to change state to
     if (this.screen === `slide${direction}toQue`) {
       this.screen = `slide${direction}toDisplay`;
       this.navPress.emit(`${direction}ToQue`);
     } else if (this.screen === null) {
+      this.screen = `slide${direction}toDisplay`;
+      this.navPress.emit(`${direction}ToQue`);
+    } else if (this.screen === `slide${otherWay[direction]}toQue`) {
       this.screen = `slide${direction}toDisplay`;
       this.navPress.emit(`${direction}ToQue`);
     } else {

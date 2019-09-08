@@ -67,7 +67,6 @@ export class ProjectService {
   }
 
   scroll(direction: string): void {
-    this.screen1 = this.switchScreen(direction);
     this.rotateLandingReel(direction);
     this.chooseBlurb();
     this.chooseImage();
@@ -81,11 +80,5 @@ export class ProjectService {
     } else {
       this.screen1 = true;
     }
-  }
-  private switchScreen(direction: string): boolean {
-    if (direction !== this.lastDirection) {
-      return true;
-    }
-    return this.screen1;
   }
 }

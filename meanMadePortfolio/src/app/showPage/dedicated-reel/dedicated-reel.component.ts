@@ -26,6 +26,15 @@ import { ProjectService } from 'src/app/services/project.service';
           ])
         ),
       ]),
+      transition('LeftToQue => RightToQue', [
+        animate(
+          '500ms',
+          keyframes([
+            style({ right: '1170px', bottom: '0', offset: 0 }),
+            style({ right: '0', offset: 1 }),
+          ])
+        ),
+      ]),
       transition('* => RightToQue', [
         animate(
           '500ms',
@@ -93,6 +102,7 @@ export class DedicatedReelComponent implements OnInit {
   @Output() navPress = new EventEmitter();
   constructor(private readonly projServ: ProjectService) {}
   ngOnInit() {
+    this.projServ.scroll('Right');
     this.projServ.displayImage$.subscribe(image => {
       if (this.projServ.screen1) {
         this.display = image;
@@ -100,16 +110,22 @@ export class DedicatedReelComponent implements OnInit {
         this.que = image;
       }
     });
-    this.projServ.scroll('Right');
   }
 
   scroll(direction: string): void {
     this.projServ.scroll(direction);
+    const otherWay: object = { Right: 'Left', Left: 'Right' };
+
     if (this.direction === `${direction}ToQue`) {
       this.direction = `${direction}ToDisplay`;
       this.navPress.emit(`${direction}ToDisplay`);
     } else if (this.direction === null) {
+      // initialize directioin.
       this.direction = `${direction}ToQue`;
+    } else if (this.direction === `${otherWay[direction]}ToQue`) {
+      // make sure to que-states are consecutive
+      this.direction = `${direction}ToDisplay`;
+      this.navPress.emit(`${direction}ToDisplay`);
     } else {
       this.direction = `${direction}ToQue`;
       this.navPress.emit(`${direction}ToQue`);
