@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectService {
+export class ProjectsService {
   private imageSource = new Subject<any[]>();
   private blurbSource = new Subject<any[]>();
   private linkSource = new Subject<any[]>();
@@ -20,38 +20,6 @@ export class ProjectService {
 
   constructor() {}
 
-  private initLandingReel(direction: string): void {
-    let dll = new DLL.LandingDLL();
-    dll = dll.DummyDLL();
-
-    if (direction === 'Right') {
-      this.display = dll.getTheFirst();
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
-    } else {
-      this.display = dll.getTheLast();
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
-    }
-  }
-
-  private rotateLandingReel(direction: string): void {
-    if (this.display === undefined) {
-      this.initLandingReel(direction);
-      return;
-    }
-
-    if (direction === 'Right') {
-      this.display = this.que[1];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
-    } else {
-      this.display = this.que[0];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
-    }
-  }
-
   private chooseImage() {
     this.imageSource.next([this.display.id, this.display.image]);
   }
@@ -65,10 +33,40 @@ export class ProjectService {
       this.display.blurb,
     ]);
   }
+  private initShowReel(direction: string): void {
+    let dll = new DLL.LandingDLL();
+    dll = dll.DummyDLL();
 
+    if (direction === 'Up') {
+      this.display = dll.getTheFirst();
+      this.que[0] = this.display.previous;
+      this.que[1] = this.display.next;
+    } else {
+      this.display = dll.getTheLast();
+      this.que[0] = this.display.previous;
+      this.que[1] = this.display.next;
+    }
+  }
+
+  private rotateShowReel(direction: string): void {
+    if (this.display === undefined) {
+      this.initShowReel(direction);
+      return;
+    }
+
+    if (direction === 'Up') {
+      this.display = this.que[1];
+      this.que[0] = this.display.previous;
+      this.que[1] = this.display.next;
+    } else {
+      this.display = this.que[0];
+      this.que[0] = this.display.previous;
+      this.que[1] = this.display.next;
+    }
+  }
   scroll(direction: string): void {
     this.screen1 = this.switchScreen(direction);
-    this.rotateLandingReel(direction);
+    this.rotateShowReel(direction);
     this.chooseBlurb();
     this.chooseImage();
     this.chooseLinks();

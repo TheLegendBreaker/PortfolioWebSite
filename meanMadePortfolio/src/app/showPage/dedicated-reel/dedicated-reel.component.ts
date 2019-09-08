@@ -7,6 +7,7 @@ import {
   animate,
   keyframes,
 } from '@angular/animations';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-dedicated-reel',
@@ -84,13 +85,26 @@ import {
   ],
 })
 export class DedicatedReelComponent implements OnInit {
-  constructor() {}
   screen: string;
   direction: string;
+  que: any[] = [];
+  display: any[] = [];
+  links: any[] = [];
   @Output() navPress = new EventEmitter();
-  ngOnInit() {}
+  constructor(private readonly projServ: ProjectService) {}
+  ngOnInit() {
+    this.projServ.displayImage$.subscribe(image => {
+      if (this.projServ.screen1) {
+        this.display = image;
+      } else {
+        this.que = image;
+      }
+    });
+    this.projServ.scroll('Right');
+  }
 
   scroll(direction: string): void {
+    this.projServ.scroll(direction);
     if (this.direction === `${direction}ToQue`) {
       this.direction = `${direction}ToDisplay`;
       this.navPress.emit(`${direction}ToDisplay`);

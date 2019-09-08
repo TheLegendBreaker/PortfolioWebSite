@@ -4,13 +4,13 @@
 <div class="display-container">
   <div id="screen1" [@screen1]="direction">
     screen 1
+    <img src="{{ display[1] }}" alt="{{ display[1] }}" />
     {{ direction }}
-    <app-display-project></app-display-project>
   </div>
   <div id="screen2" [@screen2]="direction">
     screen2
+    <img src="{{ que[1] }}" alt="{{ que[1] }}" />
     {{ direction }}
-    <app-display-project></app-display-project>
   </div>
 </div>
 <div (click)="scroll('Right')" class="direction-button-listener">

@@ -1,4 +1,4 @@
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import * as DLL from '../../interface';
@@ -133,7 +133,7 @@ export class ReelComponent implements OnInit {
   // eventualy refactor so this is handled by the project service
   @Output() navPress = new EventEmitter();
 
-  constructor(private readonly projServ: ProjectService) {}
+  constructor(private readonly projServ: ProjectsService) {}
   ngOnInit() {
     // set up display with welcome information.
     this.display = [

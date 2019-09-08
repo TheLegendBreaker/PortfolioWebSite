@@ -3,7 +3,7 @@ article {
   height: 180px;
   width: 450px;
   padding: 30px;
-  /* overflow: hidden; */
+  overflow: hidden;
 
   border-radius: 80px;
   border: black solid 15px;
@@ -30,7 +30,7 @@ p {
 }
 
 .screen2 {
-  bottom: 20px;
+  bottom: 97px;
   right: 500px;
 }
 

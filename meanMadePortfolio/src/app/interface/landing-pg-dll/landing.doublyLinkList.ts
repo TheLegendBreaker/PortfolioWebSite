@@ -84,4 +84,27 @@ export class LandingDLL {
   getTheLast(): LandingNode {
     return this.tail;
   }
+
+  private DummyProjs(): LandingNode[] {
+    const projects: LandingNode[] = [];
+    for (let i = 0; i < 4; i++) {
+      const project: LandingNode = new LandingNode(
+        i,
+        i,
+        `PROJECT ${i}`,
+        `this is the project. here's what I did.`,
+        `image${i}`,
+        [`link${i}`, `link${i + 1}`, `link${i + 2}`]
+      );
+
+      projects.push(project);
+    }
+    return projects;
+  }
+
+  DummyDLL(): LandingDLL {
+    const dll = new LandingDLL();
+    dll.populateNewList(this.DummyProjs());
+    return dll;
+  }
 }

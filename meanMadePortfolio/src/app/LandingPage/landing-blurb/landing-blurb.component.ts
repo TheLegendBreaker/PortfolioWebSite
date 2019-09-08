@@ -7,7 +7,7 @@ import {
   animate,
   keyframes,
 } from '@angular/animations';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-landing-blurb',
@@ -107,22 +107,18 @@ export class LandingBlurbComponent implements OnInit {
   @Input() direction: any;
   display: any[] = [];
   que: any[] = [];
-  constructor(private readonly projServ: ProjectService) {}
+  constructor(private readonly projServ: ProjectsService) {}
 
   ngOnInit() {
     // set up default message.
     this.display = [null, `welcome`, `My name is`, `Hector G. Diaz`, true];
     // get the dsiplay to hold the emitted info so it can be accessed in the html
     this.projServ.displayBlurb$.subscribe(blurb => {
-      console.log('here is the service screen', this.projServ.screen1);
       if (this.projServ.screen1) {
         this.display = blurb;
       } else {
         this.que = blurb;
-        console.log('Else triggerd', this.que);
       }
-      // this.que = this.display;
-      // this.display = blurb;
     });
   }
 }
