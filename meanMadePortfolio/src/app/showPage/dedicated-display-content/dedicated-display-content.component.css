@@ -17,3 +17,8 @@ section {
 .screen2 {
   top: 160px;
 }
+
+p {
+  height: 115px;
+  width: 100%;
+}
