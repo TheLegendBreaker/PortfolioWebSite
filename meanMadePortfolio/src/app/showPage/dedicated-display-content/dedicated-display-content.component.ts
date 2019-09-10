@@ -7,6 +7,7 @@ import {
   keyframes,
   transition,
 } from '@angular/animations';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-dedicated-display-content',
@@ -97,7 +98,18 @@ import {
 })
 export class DedicatedDisplayContentComponent implements OnInit {
   @Input() direction: any;
-  constructor() {}
+  que: any[] = [];
+  display: any[] = [];
 
-  ngOnInit() {}
+  constructor(private readonly porjServ: ProjectService) {}
+
+  ngOnInit() {
+    this.porjServ.displayBlurb$.subscribe(blurb => {
+      if (this.porjServ.screen1) {
+        this.display = blurb;
+      } else {
+        this.que = blurb;
+      }
+    });
+  }
 }
