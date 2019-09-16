@@ -65,6 +65,7 @@ export class ProjectsService {
     }
   }
   scroll(direction: string): void {
+    console.log('scroll triggerd');
     this.rotateShowReel(direction);
     this.chooseBlurb();
     this.chooseImage();

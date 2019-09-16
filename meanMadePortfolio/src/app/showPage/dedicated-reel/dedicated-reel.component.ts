@@ -26,15 +26,6 @@ import { ProjectService } from 'src/app/services/project.service';
           ])
         ),
       ]),
-      transition('LeftToQue => RightToQue', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ right: '1170px', bottom: '0', offset: 0 }),
-            style({ right: '0', offset: 1 }),
-          ])
-        ),
-      ]),
       transition('* => RightToQue', [
         animate(
           '500ms',

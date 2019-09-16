@@ -55,13 +55,13 @@ import { ProjectService } from 'src/app/services/project.service';
       ]),
     ]),
     trigger('screen2', [
-      state('LeftToQue', style({ top: '-57px' })),
-      state('RightToQue', style({ top: '-57px' })),
+      state('LeftToQue', style({ top: '-155px' })),
+      state('RightToQue', style({ top: '-155px' })),
       transition('* => LeftToQue', [
         animate(
           '500ms',
           keyframes([
-            style({ color: '#00000000', top: '-57px', offset: 0 }),
+            style({ color: '#00000000', top: '-155px', offset: 0 }),
             style({ color: '#000000', offset: 1 }),
           ])
         ),
@@ -79,7 +79,7 @@ import { ProjectService } from 'src/app/services/project.service';
         animate(
           '500ms',
           keyframes([
-            style({ color: '#00000000', top: '-57px', offset: 0 }),
+            style({ color: '#00000000', top: '-155px', offset: 0 }),
             style({ color: '#000000', offset: 1 }),
           ])
         ),

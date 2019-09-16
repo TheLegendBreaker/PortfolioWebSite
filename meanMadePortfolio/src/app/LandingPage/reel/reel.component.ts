@@ -147,8 +147,10 @@ export class ReelComponent implements OnInit {
     this.projServ.displayImage$.subscribe(image => {
       // make sure the correct prop gets the newly displaying project
       if (this.projServ.screen1) {
+        console.log('display if triggerd');
         this.display = image;
       } else {
+        console.log('que if triggerd');
         this.que = image;
         this.link = [`project/`, this.que[0]];
       }
@@ -158,6 +160,7 @@ export class ReelComponent implements OnInit {
   scroll(direction: string): void {
     const otherWay: object = { Up: 'Down', Down: 'Up' };
 
+    console.log('here is what is in display', this.display);
     // set of conditons to figure out what to change state to
     if (this.screen === `slide${direction}toQue`) {
       this.screen = `slide${direction}toDisplay`;
