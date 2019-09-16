@@ -1,17 +1,14 @@
-<div (click)="scroll('Up')" class="direction-button-listener">
-  <button class="up-button direction-button">up</button>
-</div>
 <div class="display-container">
   <div id="screen1" [@screen1]="screen" [routerLink]="['project/', display[0]]">
-    <img *ngIf="!display[2]" src="{{ display[1] }}" alt="{{ display[1] }}" />
+    <img *ngIf="display[0]" src="{{ display[1] }}" alt="{{ display[1] }}" />
     <!-- <img *ngIf="!display[2]" src="{{ screen1[1] }}" alt="{{ screen1[1] }}" /> -->
     <!-- <app-display[1]-project></app-display[1]-project> -->
   </div>
 
   <div id="screen2" [@screen2]="screen" [routerLink]="link">
-    <img *ngIf="!que[2]" src="{{ que[1] }}" alt="{{ que[1] }}" />
+    <img *ngIf="que[0]" src="{{ que[1] }}" alt="{{ que[1] }}" />
     <!-- <img *ngIf="!display[2]" src="{{ screen2[1] }}" alt="{{ screen2[1] }}" /> -->
-    <div id="elevator-pitch" *ngIf="display[2]">
+    <div id="elevator-pitch" *ngIf="display[0] === null">
       <p>{{ display[1] }}</p>
       <br />
       <p>{{ display[2] }}</p>
@@ -23,9 +20,4 @@
     <!-- <app-display-project></app-display-project> -->
     screen 2
   </div>
-</div>
-<div (click)="scroll('Down')" class="direction-button-listener">
-  <button class="down-button direction-button">
-    down
-  </button>
 </div>

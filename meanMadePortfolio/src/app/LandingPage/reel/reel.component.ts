@@ -125,13 +125,8 @@ export class ReelComponent implements OnInit {
   screen: string;
   // a que property to keep track of what state should be next
   que: any[] = [];
-
   display: any[] = [];
-
-  screen1 = true;
   link: any[] = [];
-  // eventualy refactor so this is handled by the project service
-  @Output() navPress = new EventEmitter();
 
   constructor(private readonly projServ: ProjectsService) {}
   ngOnInit() {
@@ -147,35 +142,15 @@ export class ReelComponent implements OnInit {
     this.projServ.displayImage$.subscribe(image => {
       // make sure the correct prop gets the newly displaying project
       if (this.projServ.screen1) {
-        console.log('display if triggerd');
         this.display = image;
+        console.log('display if triggerd', this.display);
+        this.screen = image[2];
       } else {
         console.log('que if triggerd');
         this.que = image;
         this.link = [`project/`, this.que[0]];
+        this.screen = image[2];
       }
     });
-  }
-  // helper function to help specific transitions of state work as expected
-  scroll(direction: string): void {
-    const otherWay: object = { Up: 'Down', Down: 'Up' };
-
-    console.log('here is what is in display', this.display);
-    // set of conditons to figure out what to change state to
-    if (this.screen === `slide${direction}toQue`) {
-      this.screen = `slide${direction}toDisplay`;
-      this.navPress.emit(`${direction}ToQue`);
-    } else if (this.screen === null) {
-      this.screen = `slide${direction}toDisplay`;
-      this.navPress.emit(`${direction}ToQue`);
-    } else if (this.screen === `slide${otherWay[direction]}toQue`) {
-      this.screen = `slide${direction}toDisplay`;
-      this.navPress.emit(`${direction}ToQue`);
-    } else {
-      this.screen = `slide${direction}toQue`;
-      this.navPress.emit(`${direction}ToDisplay`);
-    }
-    this.projServ.scroll(direction);
-    console.log('here is the screen2', this.screen);
   }
 }

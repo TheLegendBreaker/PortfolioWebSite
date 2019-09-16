@@ -9,19 +9,32 @@ export class ProjectsService {
   private imageSource = new Subject<any[]>();
   private blurbSource = new Subject<any[]>();
   private linkSource = new Subject<any[]>();
+  private directionSourse = new Subject<any[]>();
+
+  setDirection$ = this.directionSourse.asObservable();
   displayImage$ = this.imageSource.asObservable();
   displayBlurb$ = this.blurbSource.asObservable();
   useLinks$ = this.linkSource.asObservable();
+
   que: DLL.LandingNode[] = [];
   display: DLL.LandingNode;
 
   screen1 = true;
+  // is this acutally being used
   lastDirection: string;
+
+  // refactor to only use
+  direction: string;
+  blurbDirection: string;
 
   constructor() {}
 
   private chooseImage() {
-    this.imageSource.next([this.display.id, this.display.image]);
+    this.imageSource.next([
+      this.display.id,
+      this.display.image,
+      this.direction,
+    ]);
   }
   private chooseLinks() {
     this.linkSource.next(this.display.links);
@@ -31,6 +44,7 @@ export class ProjectsService {
       this.display.id,
       this.display.title,
       this.display.blurb,
+      this.blurbDirection,
     ]);
   }
   private initShowReel(direction: string): void {
@@ -67,11 +81,32 @@ export class ProjectsService {
   scroll(direction: string): void {
     console.log('scroll triggerd');
     this.rotateShowReel(direction);
+    this.scrollAnimationState(direction);
     this.chooseBlurb();
     this.chooseImage();
     this.chooseLinks();
     this.chooseScreen();
     this.lastDirection = direction;
+  }
+
+  private scrollAnimationState(direction: string): void {
+    const otherWay: object = { Up: 'Down', Down: 'Up' };
+
+    // set of conditons to figure out what to change state to
+    if (this.direction === `slide${direction}toQue`) {
+      this.direction = `slide${direction}toDisplay`;
+      this.blurbDirection = `${direction}ToQue`;
+    } else if (this.direction === null) {
+      this.direction = `slide${direction}toDisplay`;
+      this.blurbDirection = `${direction}ToQue`;
+    } else if (this.direction === `slide${otherWay[direction]}toQue`) {
+      this.direction = `slide${direction}toDisplay`;
+      this.blurbDirection = `${direction}ToQue`;
+    } else {
+      this.direction = `slide${direction}toQue`;
+      this.blurbDirection = `${direction}ToDisplay`;
+    }
+    console.log('here is the screen2', this.direction);
   }
   private chooseScreen(): void {
     if (this.screen1) {

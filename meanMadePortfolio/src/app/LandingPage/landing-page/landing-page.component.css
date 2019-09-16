@@ -26,3 +26,30 @@ aside {
 
   text-align: center;
 }
+
+button {
+  color: none;
+  background-color: none;
+}
+.direction-button-listener {
+  display: inline-block;
+}
+.up-button {
+  clip-path: polygon(96% 100%, 50% 20%, 4% 100%, 0 85%, 50% 0, 100% 85%);
+  width: 300px;
+  height: 120px;
+
+  background-color: #0066ff;
+}
+.down-button {
+  clip-path: polygon(100% 15%, 50% 100%, 0% 15%, 4% 0%, 50% 80%, 96% 0%);
+  width: 300px;
+  height: 120px;
+  margin-top: -10px;
+
+  background-color: #0066ff;
+}
+/* set up client side animations */
+div.direction-button-listener:active button.direction-button {
+  background-color: #ffaaaa;
+}

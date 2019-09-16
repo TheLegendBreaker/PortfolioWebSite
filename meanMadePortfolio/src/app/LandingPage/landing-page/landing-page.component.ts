@@ -1,4 +1,4 @@
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -9,11 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LandingPageComponent implements OnInit {
   // set up a property to display the project blurb
   blurb: string;
-  // property for main content animation binding
-  direction: any;
 
   links: any[] = [];
-  constructor(private readonly projServ: ProjectService) {}
+  constructor(private readonly projServ: ProjectsService) {}
 
   ngOnInit() {
     this.links = [`https://github.com/TheLegendBreaker`];
@@ -22,8 +20,8 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  scroll(direction: Event): void {
-    this.direction = direction;
-    console.log(`here is the direction event: ${this.direction}`);
+  scroll(direction: string) {
+    console.log('scroll on landing page');
+    this.projServ.scroll(direction);
   }
 }

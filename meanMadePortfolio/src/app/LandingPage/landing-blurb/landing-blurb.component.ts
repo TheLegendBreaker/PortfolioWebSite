@@ -104,7 +104,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
   ],
 })
 export class LandingBlurbComponent implements OnInit {
-  @Input() direction: any;
+  direction: string;
   display: any[] = [];
   que: any[] = [];
   constructor(private readonly projServ: ProjectsService) {}
@@ -116,8 +116,10 @@ export class LandingBlurbComponent implements OnInit {
     this.projServ.displayBlurb$.subscribe(blurb => {
       if (this.projServ.screen1) {
         this.display = blurb;
+        this.direction = blurb[3];
       } else {
         this.que = blurb;
+        this.direction = blurb[3];
       }
     });
   }
