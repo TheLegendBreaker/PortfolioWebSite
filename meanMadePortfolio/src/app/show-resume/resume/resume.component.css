@@ -1,0 +1,59 @@
+body {
+  margin: 0 30px;
+}
+
+/* header */
+header {
+  padding: 25px;
+  padding-bottom: 15px;
+
+  border-bottom: solid black 3px;
+}
+h1 {
+  display: inline-block;
+  margin-right: 30px;
+
+  font-size: 40px;
+}
+header h1 span {
+  display: block;
+  font-size: 18px;
+  font-weight: normal;
+}
+header aside {
+  margin-right: 30px;
+  display: inline-block;
+}
+header section {
+  display: inline-block;
+  width: 450px;
+  border-top: solid black 3px;
+}
+/* body */
+main {
+  height: 390px;
+}
+article {
+  height: 100%;
+  display: inline-block;
+  padding: 20px;
+
+  vertical-align: top;
+  border-right: solid black 3px;
+}
+article h4 {
+  margin-bottom: 5px;
+}
+.p-skills {
+  width: 200px;
+  margin-right: 10px;
+}
+.p-skills p {
+  text-align: right;
+}
+.education {
+  width: 300px;
+}
+.education p {
+  text-align: center;
+}
