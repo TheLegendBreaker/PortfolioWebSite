@@ -28,8 +28,8 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#00000000', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
+            style({ color: '#000000', offset: 0 }),
+            style({ color: '#00000000', offset: 1 }),
           ])
         ),
       ]),
@@ -46,8 +46,8 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
+            style({ color: '#00000000', right: '0px', offset: 0 }),
+            style({ color: '#000000', offset: 1 }),
           ])
         ),
       ]),
@@ -55,8 +55,8 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
+            style({ color: '#00000000', right: '0px', offset: 0 }),
+            style({ color: '#000000', offset: 1 }),
           ])
         ),
       ]),
@@ -69,8 +69,8 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#00000000', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
+            style({ color: '#000000', offset: 0 }),
+            style({ color: '#00000000', offset: 1 }),
           ])
         ),
       ]),
@@ -78,8 +78,8 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#00000000', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
+            style({ color: '#000000', offset: 0 }),
+            style({ color: '#00000000', offset: 1 }),
           ])
         ),
       ]),
@@ -87,8 +87,13 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
+            style({
+              color: '#00000000',
+              right: '0',
+              bottom: '190.5px',
+              offset: 0,
+            }),
+            style({ color: '#000000', offset: 1 }),
           ])
         ),
       ]),
@@ -96,8 +101,13 @@ import { Subscription } from 'rxjs';
         animate(
           '300ms',
           keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
+            style({
+              color: '#00000000',
+              right: '0',
+              bottom: '190.5px',
+              offset: 0,
+            }),
+            style({ color: '#000000', offset: 1 }),
           ])
         ),
       ]),

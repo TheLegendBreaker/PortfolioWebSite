@@ -95,6 +95,7 @@ export class ProjectsService {
     // set of conditons to figure out what to change state to
     if (this.direction === `slide${direction}toQue`) {
       this.direction = `slide${direction}toDisplay`;
+      // eventually refactor so state for is the same for both blurb and reel
       this.blurbDirection = `${direction}ToQue`;
     } else if (this.direction === null) {
       this.direction = `slide${direction}toDisplay`;
