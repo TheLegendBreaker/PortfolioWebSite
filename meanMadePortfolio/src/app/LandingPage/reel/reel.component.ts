@@ -1,5 +1,5 @@
 import { ProjectsService } from 'src/app/services/projects.service';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import * as DLL from '../../interface';
 import {
@@ -10,6 +10,7 @@ import {
   transition,
   style,
 } from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reel',
@@ -120,7 +121,7 @@ import {
     ]),
   ],
 })
-export class ReelComponent implements OnInit {
+export class ReelComponent implements OnInit, OnDestroy {
   // property to handle state;
   screen: string;
   // a que property to keep track of what state should be next
@@ -128,18 +129,10 @@ export class ReelComponent implements OnInit {
   display: any[] = [];
   link: any[] = [];
 
-  constructor(private readonly projServ: ProjectsService) {}
-  ngOnInit() {
-    // set up display with welcome information.
-    this.display = [
-      null,
-      `I am a problem solver who is consistently improving the systems I work with. I have brought multiple companies further with these skills. this is my portfolio website and its job is to give working of these skills.`,
-      `I have a background in graphic design as freelancer. I have managed independent contracts and produced work that exceeds expectations within a deadline. My graphic design experience also gives me a  creative perspective that helps me rethink challenges and come up with innovative solutions.`,
-      `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
-    ];
+  subscription: Subscription;
 
-    this.link = [`resume`];
-    this.projServ.displayImage$.subscribe(image => {
+  constructor(private readonly projServ: ProjectsService) {
+    this.subscription = projServ.displayImage$.subscribe(image => {
       // make sure the correct prop gets the newly displaying project
       if (this.projServ.screen1) {
         this.display = image;
@@ -152,5 +145,19 @@ export class ReelComponent implements OnInit {
         this.screen = image[2];
       }
     });
+  }
+  ngOnInit() {
+    // set up display with welcome information.
+    this.display = [
+      null,
+      `I am a problem solver who is consistently improving the systems I work with. I have brought multiple companies further with these skills. this is my portfolio website and its job is to give working of these skills.`,
+      `I have a background in graphic design as freelancer. I have managed independent contracts and produced work that exceeds expectations within a deadline. My graphic design experience also gives me a  creative perspective that helps me rethink challenges and come up with innovative solutions.`,
+      `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
+    ];
+
+    this.link = [`resume`];
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

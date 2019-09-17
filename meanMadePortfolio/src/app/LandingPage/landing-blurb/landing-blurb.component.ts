@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {
   trigger,
   style,
@@ -8,6 +8,7 @@ import {
   keyframes,
 } from '@angular/animations';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-landing-blurb',
@@ -103,17 +104,15 @@ import { ProjectsService } from 'src/app/services/projects.service';
     ]),
   ],
 })
-export class LandingBlurbComponent implements OnInit {
+export class LandingBlurbComponent implements OnInit, OnDestroy {
   direction: string;
   display: any[] = [];
   que: any[] = [];
-  constructor(private readonly projServ: ProjectsService) {}
 
-  ngOnInit() {
-    // set up default message.
-    this.display = [null, `welcome`, `My name is`, `Hector G. Diaz`, true];
-    // get the dsiplay to hold the emitted info so it can be accessed in the html
-    this.projServ.displayBlurb$.subscribe(blurb => {
+  subscribtion: Subscription;
+
+  constructor(private readonly projServ: ProjectsService) {
+    this.subscribtion = projServ.displayBlurb$.subscribe(blurb => {
       if (this.projServ.screen1) {
         this.display = blurb;
         this.direction = blurb[3];
@@ -122,5 +121,15 @@ export class LandingBlurbComponent implements OnInit {
         this.direction = blurb[3];
       }
     });
+  }
+
+  ngOnInit() {
+    // set up default message.
+    this.display = [null, `welcome`, `My name is`, `Hector G. Diaz`, true];
+    // get the dsiplay to hold the emitted info so it can be accessed in the html
+  }
+
+  ngOnDestroy(): void {
+    this.subscribtion.unsubscribe();
   }
 }
