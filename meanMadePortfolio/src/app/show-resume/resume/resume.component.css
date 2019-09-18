@@ -27,7 +27,6 @@ header aside {
 header section {
   display: inline-block;
   width: 450px;
-  border-top: solid black 3px;
 }
 /* body */
 main {
@@ -44,6 +43,11 @@ article {
 article h4 {
   margin-bottom: 5px;
 }
+main article ul {
+  margin-left: 40px;
+  margin-bottom: 25px;
+  font-size: 12px;
+}
 .p-skills {
   width: 200px;
   margin-right: 10px;
@@ -51,9 +55,43 @@ article h4 {
 .p-skills p {
   text-align: right;
 }
+.projects {
+  width: 373px;
+}
 .education {
-  width: 300px;
+  padding: 0;
+  border: none;
+  width: 470px;
 }
 .education p {
   text-align: center;
+}
+.education h4 {
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+.education small {
+  margin-left: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.education span small {
+  margin: 0;
+}
+.education ul {
+  max-width: 190px;
+}
+.education section {
+  padding: 20px;
+  border-top: solid black 3px;
+}
+.education div div {
+  display: block;
+}
+.education div {
+  vertical-align: top;
+  display: inline-block;
+}
+.work-ex {
+  margin-top: 20px;
 }
