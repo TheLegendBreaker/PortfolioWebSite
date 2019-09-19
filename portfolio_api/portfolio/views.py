@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.views import View
 
@@ -13,4 +14,10 @@ class ProjectDetails(View):
     def put(self, request, proj_id, token):
         return JsonResponse({'put_one':'working'})
     def delete(self, request, proj_id, token):
-        return JsonResponse({'delete_one':'working'})
+        return JsonResponse({'delete_one': 'working'})
+
+class Email(View):
+    def post(self, request, context):
+        pass
+    def put(self, request):
+        pass
