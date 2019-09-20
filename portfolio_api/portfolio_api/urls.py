@@ -17,7 +17,7 @@ from django.urls import path
 from portfolio.views import ProjectDetails, Projects, Email
 
 urlpatterns = [
-    path('/Projects', ProjectDetails.as_view()),
-    path('/Projects/id', Projects.as_view()),
-    path('/email', Email.as_view()),
+    path('Projects', ProjectDetails.as_view()),
+    path('Projects/<int:proj_id>', Projects.as_view()),
+    path('email', Email.as_view()),
 ]

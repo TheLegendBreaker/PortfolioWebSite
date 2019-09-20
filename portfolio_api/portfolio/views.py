@@ -1,6 +1,7 @@
-from django.core.mail import send_mail
 from django.http import JsonResponse
+from django.core import mail
 from django.views import View
+import json
 
 class Projects(View):
     def get(self, request):
@@ -17,7 +18,15 @@ class ProjectDetails(View):
         return JsonResponse({'delete_one': 'working'})
 
 class Email(View):
-    def post(self, request, context):
-        pass
+    def post(self, request):
+        # need to make sure the contact form follows the format needed for mail.send_mail()
+        email = request.body.decode()
+        email = json.loads(email);
+        email['subject'] = "Hector G. Diaz's Resume"
+        email['to'] = 'hector.g.diaz.the.3rd@gmail.com'
+        print('*' * 100, 'this is the formatted request', type(email))
+        mail.send_mail(email['subject'], email['content'], email['email'], [email['to']])
+        return JsonResponse({'email_post': 'working', 'request': email})
+        
     def put(self, request):
         pass
