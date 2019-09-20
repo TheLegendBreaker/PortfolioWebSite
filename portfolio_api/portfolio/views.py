@@ -22,11 +22,21 @@ class Email(View):
         # need to make sure the contact form follows the format needed for mail.send_mail()
         email = request.body.decode()
         email = json.loads(email);
-        email['subject'] = "Hector G. Diaz's Resume"
+        email['subject'] = "email from " + email['from']
         email['to'] = 'hector.g.diaz.the.3rd@gmail.com'
-        print('*' * 100, 'this is the formatted request', type(email))
-        mail.send_mail(email['subject'], email['content'], email['email'], [email['to']])
+        mail.send_mail(email['subject'], email['content'], email['from'], [email['to']])
+
         return JsonResponse({'email_post': 'working', 'request': email})
-        
+
     def put(self, request):
-        pass
+        email = request.body.decode()
+        email = json.loads(email);
+        email = {
+            'subject': "Hector G. Diaz's Resume",
+            'content': 'my cover letter and resume',
+            'from': 'from <hector.g.diaz.the.3rd@gmail.com>',
+            'to': [email['email']]
+        }
+        mail.send_mail(email['subject'], email['content'], email['from'], email['to'])
+
+        return JsonResponse({'email_post': 'working', 'request': email})
