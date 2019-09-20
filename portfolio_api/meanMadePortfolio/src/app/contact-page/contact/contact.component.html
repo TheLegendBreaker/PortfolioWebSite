@@ -3,34 +3,25 @@
     <h1>CONTACT</h1>
   </header>
   <section>
-    <form action="/" method="post">
-      {{ email | json }}
+    <form #emailForm="ngForm" (submit)="onSubmit($event, emailForm)">
       <label for="name" class="form red">name</label>
       <input
         type="text"
-        #name
         class="form"
         name="name"
         required
-        [(ngModel)]="email.name"
+        [ngModel]="email.senderName"
       />
       <label for="email" class="form red" required>email</label>
-      <input
-        type="email"
-        #email
-        name="email"
-        id=""
-        class="form "
-        [(ngModel)]="email.email"
-      />
+      <input type="email" name="email" class="form " [ngModel]="email.email" />
+
       <label for="content" class="form red">message</label>
       <textarea
         name="content"
-        #content
         cols="30"
         rows="5"
         class="form"
-        [(ngModel)]="email.content"
+        [ngModel]="email.content"
       ></textarea>
 
       <button id="send-resume">
@@ -39,7 +30,7 @@
         </b>
       </button>
 
-      <button type="submit" class="send" (click)="contact($event)">
+      <button type="submit" class="send">
         <span class="blue">
           send
         </span>

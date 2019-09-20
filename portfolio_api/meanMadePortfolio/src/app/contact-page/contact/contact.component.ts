@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from 'src/app/services/email.service';
+import { Email } from 'src/app/interface/index';
 
 @Component({
   selector: 'app-contact',
@@ -7,18 +8,13 @@ import { EmailService } from 'src/app/services/email.service';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
-  email: {
-    name: string;
-    email: string;
-    content: string;
-  };
+  email = new Email();
   constructor(private readonly emailServ: EmailService) {}
-  ngOnInit() {
-    this.email = { name: '', email: '', content: '' };
-  }
+  ngOnInit() {}
 
-  contact(event: Event) {
+  onSubmit(event: Event, emailForm): void {
     event.preventDefault();
-    console.log('here is the data from the from', this.email);
+    console.log('here is the data from the from', emailForm.value);
+    emailForm.reset();
   }
 }
