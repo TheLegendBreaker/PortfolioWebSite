@@ -28,7 +28,7 @@ class Email(View):
         # mail.send_mail(email['subject'], email['content'], email['from'], email['to'])
         msg = mail.EmailMessage(email['subject'], email['content'], email['from'], email['to'])
         msg.content_subtype = "html"
-        msg.attach_file('./static/contact/pdfs/cover_letter_&_resume.pdf')
+        msg.attach_file("contact/static/contact/pdfs/cover_letter_and_resume.pdf")
         # msg.attach_file('static\contact\pdfs\cover_letter_&_resume.pdf')
         msg.send()
 
