@@ -12,8 +12,15 @@
         required
         [ngModel]="email.senderName"
       />
-      <label for="email" class="form red" required>email</label>
-      <input type="email" name="email" class="form " [ngModel]="email.email" />
+
+      <label for="from" class="form red">email</label>
+      <input
+        type="email"
+        name="from"
+        class="form "
+        required
+        [ngModel]="email.from"
+      />
 
       <label for="content" class="form red">message</label>
       <textarea

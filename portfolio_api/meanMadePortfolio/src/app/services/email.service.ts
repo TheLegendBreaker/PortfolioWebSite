@@ -1,9 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
+import { Email } from '../interface';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmailService {
-
-  constructor() { }
+  constructor(private readonly http: HttpClient) {}
+  contact(email: Email): Observable<any> {
+    return this.http.post('/email', email);
+  }
+  sendResume(email: Email): Observable<any> {
+    return this.http.put('/email', email);
+  }
 }

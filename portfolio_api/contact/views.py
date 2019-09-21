@@ -25,11 +25,9 @@ class Email(View):
             'from': 'from <hector.g.diaz.the.3rd@gmail.com>',
             'to': [email['email']]
         }
-        # mail.send_mail(email['subject'], email['content'], email['from'], email['to'])
         msg = mail.EmailMessage(email['subject'], email['content'], email['from'], email['to'])
         msg.content_subtype = "html"
         msg.attach_file("contact/static/contact/pdfs/cover_letter_and_resume.pdf")
-        # msg.attach_file('static\contact\pdfs\cover_letter_&_resume.pdf')
         msg.send()
 
         return JsonResponse({'email_post': 'working', 'request': email})
