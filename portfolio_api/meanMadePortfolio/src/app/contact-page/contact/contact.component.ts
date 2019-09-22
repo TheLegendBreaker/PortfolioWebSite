@@ -9,12 +9,29 @@ import { Email } from 'src/app/interface/index';
 })
 export class ContactComponent implements OnInit {
   email = new Email();
+  errors: string;
   constructor(private readonly emailServ: EmailService) {}
   ngOnInit() {}
 
-  onSubmit(event: Event, emailForm): void {
+  contact(event: Event, emailForm): void {
     event.preventDefault();
     console.log('here is the data from the from', emailForm.value);
+    this.emailServ.email = emailForm.value.from;
     emailForm.reset();
+  }
+  sendResume(event: Event): void {
+    if (this.emailServ.email !== null) {
+      this.emailServ.sendResume(this.emailServ.email).subscribe(
+        result => {
+          console.log('here is the result form django', result);
+        },
+        error => {
+          console.log('here is the error', error);
+          this.errors = error.error;
+        }
+      );
+    } else {
+      return;
+    }
   }
 }

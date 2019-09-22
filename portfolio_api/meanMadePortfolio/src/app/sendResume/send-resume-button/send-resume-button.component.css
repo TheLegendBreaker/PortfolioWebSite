@@ -1,0 +1,31 @@
+#send-resume {
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 24%;
+  height: 100px;
+  width: 300px;
+
+  background-color: #48746b;
+  border: black solid 15px;
+  border-radius: 20px;
+  text-align: left;
+  outline: none;
+}
+#send-resume b {
+  border: black solid 15px;
+  border-left: black solid 2px;
+  border-top: black solid 2px;
+  position: relative;
+  font-size: 20px;
+  padding: 3% 2%;
+  bottom: 15px;
+}
+button#send-resume:active {
+  text-align: center;
+  padding: 0;
+}
+
+button#send-resume:active b {
+  border: black solid 12px;
+  bottom: 0;
+}

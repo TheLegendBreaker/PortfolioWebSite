@@ -3,7 +3,7 @@
     <h1>CONTACT</h1>
   </header>
   <section>
-    <form #emailForm="ngForm" (submit)="onSubmit($event, emailForm)">
+    <form #emailForm="ngForm">
       <label for="name" class="form red">name</label>
       <input
         type="text"
@@ -31,13 +31,9 @@
         [ngModel]="email.content"
       ></textarea>
 
-      <button id="send-resume">
-        <b class="teal">
-          email yourself a resume
-        </b>
-      </button>
+      <app-send-resume-button></app-send-resume-button>
 
-      <button type="submit" class="send">
+      <button type="submit" class="send" (click)="contact($event, emailForm)">
         <span class="blue">
           send
         </span>
