@@ -1,1 +1,24 @@
-<p>send-resume-dialog works!</p>
+<form #emailForm="ngForm" class="red">
+  <label for="name" class="form">name</label>
+  <input
+    type="text"
+    class="form"
+    name="name"
+    required
+    [ngModel]="email.senderName"
+  />
+
+  <label for="from" class="form">email</label>
+  <input
+    type="email"
+    name="from"
+    class="form "
+    required
+    [ngModel]="email.from"
+  />
+  <button type="submit" class="send" (click)="close()">
+    <span class="blue">
+      send
+    </span>
+  </button>
+</form>
