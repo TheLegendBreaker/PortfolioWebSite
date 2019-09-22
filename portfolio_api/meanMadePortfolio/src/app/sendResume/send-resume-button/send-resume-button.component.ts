@@ -18,8 +18,7 @@ export class SendResumeButtonComponent implements OnInit {
 
     config.disableClose = false;
     config.autoFocus = true;
-    config.hasBackdrop = false;
-
+    config.panelClass = 'panel';
     this.dialog.open(SendResumeDialogComponent, config);
   }
 }

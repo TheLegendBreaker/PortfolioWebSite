@@ -26,10 +26,11 @@ input {
 
   border: solid black 15px;
 }
+form div {
+  text-align: center;
+}
 .send {
-  margin: 0 auto;
-  display: inline-block;
-  width: 150px;
+  width: 140px;
   height: 95px;
   border: black solid 15px;
 
@@ -40,7 +41,7 @@ input {
 }
 
 .send span {
-  padding: 0 7px;
+  padding: 3px 7px;
   position: relative;
   bottom: 15px;
   font-size: 28px;

@@ -1,3 +1,7 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.panel > mat-dialog-container {
+  padding: 0;
+}
 * {
   /* outline: 3px dotted aqua; */
   padding: 0px;
@@ -101,5 +105,11 @@ button.primary-button:active span.basic {
   background: #ff5555;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
