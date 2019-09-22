@@ -10,15 +10,17 @@ import { EmailService } from 'src/app/services/email.service';
 })
 export class SendResumeDialogComponent implements OnInit {
   email = new Email();
+  errors: string;
   constructor(
     private dialogRef: MatDialogRef<SendResumeDialogComponent>,
-    private readonly EmailServ: EmailService
+    private readonly emailServ: EmailService
   ) {}
 
   ngOnInit() {}
 
   close(form) {
     console.log('here is the data from the form', form.value);
+    this.emailServ.email = null;
     this.dialogRef.close();
   }
 }

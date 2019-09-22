@@ -6,12 +6,14 @@ import { Email } from '../interface';
   providedIn: 'root',
 })
 export class EmailService {
-  email: string;
-  constructor(private readonly http: HttpClient) {}
+  email: Email;
+  constructor(private readonly http: HttpClient) {
+    this.email = null;
+  }
   contact(email: Email): Observable<any> {
     return this.http.post('/email', email);
   }
-  sendResume(email: string): Observable<any> {
+  sendResume(email: Email): Observable<any> {
     return this.http.put('/email', email);
   }
 }

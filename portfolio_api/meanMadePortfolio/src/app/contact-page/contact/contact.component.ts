@@ -19,19 +19,4 @@ export class ContactComponent implements OnInit {
     this.emailServ.email = emailForm.value.from;
     emailForm.reset();
   }
-  sendResume(event: Event): void {
-    if (this.emailServ.email !== null) {
-      this.emailServ.sendResume(this.emailServ.email).subscribe(
-        result => {
-          console.log('here is the result form django', result);
-        },
-        error => {
-          console.log('here is the error', error);
-          this.errors = error.error;
-        }
-      );
-    } else {
-      return;
-    }
-  }
 }
