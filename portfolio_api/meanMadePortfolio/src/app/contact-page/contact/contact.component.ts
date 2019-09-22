@@ -16,7 +16,15 @@ export class ContactComponent implements OnInit {
   contact(event: Event, emailForm): void {
     event.preventDefault();
     console.log('here is the data from the from', emailForm.value);
-    this.emailServ.email = emailForm.value.from;
+    this.emailServ.email = emailForm.value;
+    this.emailServ.contact(emailForm.value).subscribe(
+      result => {
+        console.log('here is the result from contact', result);
+      },
+      error => {
+        this.errors = error.errors;
+      }
+    );
     emailForm.reset();
   }
 }

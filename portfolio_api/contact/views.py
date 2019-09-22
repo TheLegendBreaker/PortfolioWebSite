@@ -17,13 +17,14 @@ class Email(View):
 
     #send yourself a copy of my resume
     def put(self, request):
+
         email = request.body.decode()
         email = json.loads(email);
         email = {
             'subject': "Hector G. Diaz's Resume",
             'content': 'my cover letter and resume',
             'from': 'from <hector.g.diaz.the.3rd@gmail.com>',
-            'to': [email['email']]
+            'to': [email['from']]
         }
         msg = mail.EmailMessage(email['subject'], email['content'], email['from'], email['to'])
         msg.content_subtype = "html"

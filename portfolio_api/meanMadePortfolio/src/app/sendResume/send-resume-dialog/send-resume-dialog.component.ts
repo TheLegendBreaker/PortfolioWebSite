@@ -20,6 +20,14 @@ export class SendResumeDialogComponent implements OnInit {
 
   close(form) {
     console.log('here is the data from the form', form.value);
+    this.emailServ.sendResume(form.value).subscribe(
+      result => {
+        console.log('this is the result for sending a resume', result);
+      },
+      error => {
+        this.errors = error.error;
+      }
+    );
     this.emailServ.email = null;
     this.dialogRef.close();
   }

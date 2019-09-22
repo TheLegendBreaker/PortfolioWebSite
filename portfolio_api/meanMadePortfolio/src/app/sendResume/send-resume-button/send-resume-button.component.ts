@@ -36,6 +36,7 @@ export class SendResumeButtonComponent implements OnInit {
         this.errors = error.error;
       }
     );
+    this.emailServ.email = null;
   }
   OpenDialog() {
     const config = new MatDialogConfig();
