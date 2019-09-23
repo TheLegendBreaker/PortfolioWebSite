@@ -9,12 +9,20 @@
     <span class="red basic">H</span>
   </button>
   <main>
-    <app-dedicated-reel (navPress)="scroll($event)"></app-dedicated-reel>
+    <div (click)="scroll('Left')" class="direction-button-listener">
+      <button class="left-button direction-button">left</button>
+    </div>
+
+    <app-dedicated-reel></app-dedicated-reel>
+
+    <div (click)="scroll('Right')" class="direction-button-listener">
+      <button class="right-button direction-button">
+        right
+      </button>
+    </div>
   </main>
   <article>
-    <app-dedicated-display-content
-      [direction]="direction"
-    ></app-dedicated-display-content>
+    <app-dedicated-display-content></app-dedicated-display-content>
     <aside>
       <div class="stacked top">
         <button class="primary-button blue">

@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import {
   trigger,
   style,
@@ -8,6 +14,7 @@ import {
   keyframes,
 } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dedicated-reel',
@@ -84,42 +91,30 @@ import { ProjectService } from 'src/app/services/project.service';
     ]),
   ],
 })
-export class DedicatedReelComponent implements OnInit {
+export class DedicatedReelComponent implements OnInit, OnDestroy {
   screen: string;
   direction: string;
+
   que: any[] = [];
   display: any[] = [];
   links: any[] = [];
-  @Output() navPress = new EventEmitter();
-  constructor(private readonly projServ: ProjectService) {}
-  ngOnInit() {
-    this.projServ.scroll('Right');
-    this.projServ.displayImage$.subscribe(image => {
+
+  subscription: Subscription;
+
+  constructor(private readonly projServ: ProjectService) {
+    console.log(`REEL CONSTRUCTOR`, this.display);
+    this.subscription = projServ.displayImage$.subscribe(image => {
       if (this.projServ.screen1) {
         this.display = image;
+        this.direction = image[2];
       } else {
         this.que = image;
+        this.direction = image[2];
       }
     });
   }
-
-  scroll(direction: string): void {
-    this.projServ.scroll(direction);
-    const otherWay: object = { Right: 'Left', Left: 'Right' };
-
-    if (this.direction === `${direction}ToQue`) {
-      this.direction = `${direction}ToDisplay`;
-      this.navPress.emit(`${direction}ToDisplay`);
-    } else if (this.direction === null) {
-      // initialize directioin.
-      this.direction = `${direction}ToQue`;
-    } else if (this.direction === `${otherWay[direction]}ToQue`) {
-      // make sure to que-states are consecutive
-      this.direction = `${direction}ToDisplay`;
-      this.navPress.emit(`${direction}ToDisplay`);
-    } else {
-      this.direction = `${direction}ToQue`;
-      this.navPress.emit(`${direction}ToQue`);
-    }
+  ngOnInit() {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

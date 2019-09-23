@@ -1,6 +1,3 @@
-<div (click)="scroll('Left')" class="direction-button-listener">
-  <button class="left-button direction-button">left</button>
-</div>
 <div class="display-container">
   <div id="screen1" [@screen1]="direction">
     screen 1
@@ -12,9 +9,4 @@
     <img src="{{ que[1] }}" alt="{{ que[1] }}" />
     {{ direction }}
   </div>
-</div>
-<div (click)="scroll('Right')" class="direction-button-listener">
-  <button class="right-button direction-button">
-    right
-  </button>
 </div>

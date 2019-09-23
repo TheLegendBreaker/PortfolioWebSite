@@ -14,10 +14,17 @@
     name="from"
     class="form "
     required
+    ngModel
+    email
     [ngModel]="email.from"
   />
   <div>
-    <button type="submit" class="send" (click)="close(emailForm)">
+    <button
+      [disabled]="!emailForm.valid"
+      type="submit"
+      class="send"
+      (click)="close(emailForm)"
+    >
       <span class="blue">
         send
       </span>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   state,
   style,
@@ -8,6 +8,7 @@ import {
   transition,
 } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dedicated-display-content',
@@ -96,20 +97,27 @@ import { ProjectService } from 'src/app/services/project.service';
     ]),
   ],
 })
-export class DedicatedDisplayContentComponent implements OnInit {
-  @Input() direction: any;
+export class DedicatedDisplayContentComponent implements OnInit, OnDestroy {
+  direction: string;
   que: any[] = [];
   display: any[] = [];
-
-  constructor(private readonly porjServ: ProjectService) {}
-
-  ngOnInit() {
-    this.porjServ.displayBlurb$.subscribe(blurb => {
-      if (this.porjServ.screen1) {
+  subscription: Subscription;
+  constructor(private readonly projServ: ProjectService) {
+    // projServ.initShowReel();
+    this.subscription = projServ.displayBlurb$.subscribe(blurb => {
+      if (this.projServ.screen1) {
         this.display = blurb;
+        this.direction = blurb[3];
       } else {
         this.que = blurb;
+        this.direction = blurb[3];
       }
     });
+  }
+  ngOnInit(): void {
+    // this.projServ.initShowReel();
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

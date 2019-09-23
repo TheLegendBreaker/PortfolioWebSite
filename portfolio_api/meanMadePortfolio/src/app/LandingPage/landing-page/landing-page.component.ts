@@ -24,4 +24,5 @@ export class LandingPageComponent implements OnInit {
     console.log('scroll on landing page');
     this.projServ.scroll(direction);
   }
+  // build out an autoScroll for the change of reel state.
 }

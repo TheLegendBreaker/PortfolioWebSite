@@ -1,7 +1,5 @@
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Output, OnDestroy } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import * as DLL from '../../interface';
 import {
   trigger,
   keyframes,

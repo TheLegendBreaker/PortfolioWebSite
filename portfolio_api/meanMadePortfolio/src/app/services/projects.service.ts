@@ -20,8 +20,6 @@ export class ProjectsService {
   display: DLL.LandingNode;
 
   screen1 = true;
-  // is this acutally being used
-  lastDirection: string;
 
   // refactor to only use
   direction: string;
@@ -86,7 +84,6 @@ export class ProjectsService {
     this.chooseImage();
     this.chooseLinks();
     this.chooseScreen();
-    this.lastDirection = direction;
   }
 
   private scrollAnimationState(direction: string): void {
@@ -96,9 +93,6 @@ export class ProjectsService {
     if (this.direction === `slide${direction}toQue`) {
       this.direction = `slide${direction}toDisplay`;
       // eventually refactor so state for is the same for both blurb and reel
-      this.blurbDirection = `${direction}ToQue`;
-    } else if (this.direction === null) {
-      this.direction = `slide${direction}toDisplay`;
       this.blurbDirection = `${direction}ToQue`;
     } else if (this.direction === `slide${otherWay[direction]}toQue`) {
       this.direction = `slide${direction}toDisplay`;
