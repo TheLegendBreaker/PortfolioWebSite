@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as DLL from '../interface/index';
 import { Subject } from 'rxjs';
+import { LandingNode } from '../interface/index';
 
 // eventually split into projAnimation.service
 // and projContent.service
@@ -28,21 +29,14 @@ export class ProjectService {
   direction: string = null;
   constructor() {}
 
-  initShowReel(): void {
+  initShowReel(project: LandingNode): void {
     // reset the direction
 
     console.log(`init reel triggerd`, this.direction);
-    // let dll = new DLL.LandingDLL();
-    this.dll = this.dll.DummyDLL();
 
-    this.display = this.dll.getTheFirst();
+    this.display = project;
     this.que[0] = this.display.previous;
     this.que[1] = this.display.next;
-
-    this.chooseBlurb();
-    this.chooseImage();
-    this.chooseLinks();
-    this.chooseScreen();
   }
 
   private rotateLandingReel(direction: string): void {

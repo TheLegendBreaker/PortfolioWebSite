@@ -15,6 +15,7 @@ import {
 } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dedicated-reel',
@@ -101,7 +102,10 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private readonly projServ: ProjectService) {
+  constructor(
+    private readonly projServ: ProjectService,
+    private readonly route: ActivatedRoute
+  ) {
     console.log(`REEL CONSTRUCTOR`, this.display);
     this.subscription = projServ.displayImage$.subscribe(image => {
       if (this.projServ.screen1) {
@@ -113,7 +117,14 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
       }
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    // do something with resolver data
+    const project = this.route.snapshot.data.projects;
+    console.log(`here is the project`, project);
+    this.display = [project.id, project.image];
+
+    this.projServ.initShowReel(project);
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

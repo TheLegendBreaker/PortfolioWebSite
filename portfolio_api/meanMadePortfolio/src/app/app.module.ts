@@ -11,6 +11,7 @@ import * as fromSendResume from './sendResume';
 import { AppComponent } from './app.component';
 import * as fromContact from './contact-page';
 import * as fromShowPage from './showPage';
+import { ProjectResolver } from './resolvers/project.resolver';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import * as fromShowPage from './showPage';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ProjectResolver],
   bootstrap: [AppComponent],
   entryComponents: [fromSendResume.SendResumeDialogComponent],
 })

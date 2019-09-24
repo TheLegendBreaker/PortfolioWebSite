@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProjectService } from 'src/app/services/project.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show-project',
@@ -7,17 +8,12 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./show-project.component.css'],
 })
 export class ShowProjectComponent implements OnInit, OnDestroy {
-  constructor(private readonly projServ: ProjectService) {
-    // projServ.initShowReel();
-    // console.log(`constructor triggered`, projServ.screen1);
-  }
-  ngOnInit(): void {
-    console.log(`ng on init triggered`, this.projServ.screen1);
-    // this.projServ.initShowReel();
-  }
-  initReel(): void {
-    this.projServ.initShowReel();
-  }
+  display: any[];
+  constructor(
+    private readonly projServ: ProjectService,
+    private readonly route: ActivatedRoute
+  ) {}
+  ngOnInit(): void {}
   scroll(direction: string): void {
     this.projServ.scroll(direction);
     console.log(`direction`, direction);

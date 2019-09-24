@@ -9,6 +9,7 @@ import {
 } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dedicated-display-content',
@@ -102,8 +103,10 @@ export class DedicatedDisplayContentComponent implements OnInit, OnDestroy {
   que: any[] = [];
   display: any[] = [];
   subscription: Subscription;
-  constructor(private readonly projServ: ProjectService) {
-    // projServ.initShowReel();
+  constructor(
+    private readonly projServ: ProjectService,
+    private readonly route: ActivatedRoute
+  ) {
     this.subscription = projServ.displayBlurb$.subscribe(blurb => {
       if (this.projServ.screen1) {
         this.display = blurb;
@@ -115,9 +118,13 @@ export class DedicatedDisplayContentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit(): void {
-    // this.projServ.initShowReel();
+    console.log('HERE IS SCREEN', this.projServ.screen1);
+    const project = this.route.snapshot.data.projects;
+    console.log(`here is the project`, project);
+    this.display = [project.id, project.title, project.blurb];
   }
   ngOnDestroy(): void {
+    this.projServ.screen1 = false;
     this.subscription.unsubscribe();
   }
 }
