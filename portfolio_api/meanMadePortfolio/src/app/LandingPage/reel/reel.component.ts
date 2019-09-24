@@ -1,14 +1,9 @@
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Output, OnDestroy } from '@angular/core';
-import {
-  trigger,
-  keyframes,
-  state,
-  animate,
-  transition,
-  style,
-} from '@angular/animations';
+import { trigger, state, style } from '@angular/animations';
 import { Subscription } from 'rxjs';
+
+import { Transitions } from './reel.transition';
 
 @Component({
   selector: 'app-reel',
@@ -16,106 +11,20 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./reel.component.css'],
   animations: [
     trigger('screen1', [
-      // end up in the qued position
       state('slideUptoDisplay', style({ left: '750px' })),
-      // end up in the displayed position
-      // end up in the qued postion
       state('slideDowntoDisplay', style({ left: '750px' })),
-      // end up the displayed postion
-
-      transition('* => slideUptoQue', [
-        animate(
-          '300ms',
-          keyframes([
-            // set up to qued up postion
-            style({ left: '35px', bottom: '-500px', offset: 0 }),
-            // tells ng how much time the elment should take getting to display postion
-            style({ left: '35px', bottom: '0px', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => slideUptoDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            // end up at the qued in postion
-            style({ left: '35px', bottom: '500px', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => slideDowntoQue', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen1 qued-up postion { left: 35px, bottom 500px}
-            // end up at the qued up postion
-            style({ left: '35px', bottom: '500px', offset: 0 }),
-            style({ left: '35px', bottom: '0', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => slideDowntoDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen1 qued-in postion { left: 35px, top 500px}
-            // end up at the qued in postion
-            style({ left: '35px', bottom: '0px', offset: 0 }),
-            style({ left: '35px', bottom: '-500px', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen1UpQ(),
+      Transitions.screen1UpD(),
+      Transitions.screen1DownQ(),
+      Transitions.screen1DownD(),
     ]),
     trigger('screen2', [
-      // end up in the qued postion
       state('slideUptoQue', style({ left: '750px', bottom: '460px' })),
-
       state('slideDowntoQue', style({ left: '750px', bottom: '460px' })),
-      // end up the  displayed positon
-      transition('* => slideUptoDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen2 qued-up postion { left: 35px, bottom: -50px}
-            style({ left: '35px', bottom: '-50px', offset: 0 }),
-            // timely move to display postion
-            style({ left: '35px', bottom: '460px', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => slideUptoQue', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen2 qued-in postion { left: 35px, buttom: -50px}
-            // end up at the qued in postion
-            style({ left: '35px', bottom: '960px', offset: 1 }),
-            // style({ left: '750px', bottom: '460px', offset: 0.5 }),
-          ])
-        ),
-      ]),
-      transition('* => slideDowntoQue', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen2 qued-up postion { left: 35px, buttom: 960px}
-            // end up at the qued up postion
-            // style({ left: '35px', bottosm: '960px', offset: 0 }),
-            style({ left: '35px', bottom: '-50px', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => slideDowntoDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            // screen2 qued-in postion { left: 35px, bottom: -50px}
-            // end up at the qued in postion
-            style({ left: '35px', bottom: '960px', offset: 0 }),
-            style({ left: '35px', bottom: '460px', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen2UpQ(),
+      Transitions.screen2UpD(),
+      Transitions.screen2DownQ(),
+      Transitions.screen2DownD(),
     ]),
   ],
 })

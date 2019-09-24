@@ -37,19 +37,12 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       }
     }, 5000);
   }
-  private whichDirection() {
-    if (this.projServ.direction === undefined) {
-      this.projServ.scroll('Up');
-    } else {
-      this.projServ.scroll(this.lastDirection);
-    }
-  }
 
   private clientNavPress() {
     this.navPress = true;
     setInterval(() => {
       this.navPress = false;
-    }, 10000);
+    }, 5000);
   }
   ngOnDestroy() {
     clearInterval(this.autoNav);
