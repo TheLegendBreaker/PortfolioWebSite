@@ -10,107 +10,29 @@ import {
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Subscription } from 'rxjs';
 
+import { Transitions } from './landing-blurb.transition';
+
 @Component({
   selector: 'app-landing-blurb',
   templateUrl: './landing-blurb.component.html',
   styleUrls: ['./landing-blurb.component.css'],
   animations: [
     trigger('screen1', [
-      // end up in the qued position
       state('UpToQue', style({ right: '500px' })),
-      // end up in the qued postion
       state('DownToQue', style({ right: '500px' })),
-
-      // and the qued elment needs a dipslay state
-      // end up ih the displayed position
-
-      transition('* => UpToQue', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => DownToQue', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => UpToDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#00000000', right: '0px', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => DownToDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#00000000', right: '0px', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen1UpQ(),
+      Transitions.screen1UpD(),
+      Transitions.screen1DownQ(),
+      Transitions.screen1DownD(),
     ]),
     trigger('screen2', [
       state('UpToQue', style({ right: '0', bottom: '190.5px' })),
       state('DownToQue', style({ right: '0', bottom: '190.5px' })),
 
-      transition('* => UpToDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => DownToDisplay', [
-        animate(
-          '300ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => UpToQue', [
-        animate(
-          '300ms',
-          keyframes([
-            style({
-              color: '#00000000',
-              right: '0',
-              bottom: '190.5px',
-              offset: 0,
-            }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => DownToQue', [
-        animate(
-          '300ms',
-          keyframes([
-            style({
-              color: '#00000000',
-              right: '0',
-              bottom: '190.5px',
-              offset: 0,
-            }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen2UpD(),
+      Transitions.screen2UpQ(),
+      Transitions.screen2DownD(),
+      Transitions.screen2DownQ(),
     ]),
   ],
 })
