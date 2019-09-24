@@ -11,6 +11,8 @@ import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
+import { Transitions } from './dedicated-display-content.transition';
+
 @Component({
   selector: 'app-dedicated-display-content',
   templateUrl: './dedicated-display-content.component.html',
@@ -19,82 +21,18 @@ import { ActivatedRoute } from '@angular/router';
     trigger('screen1', [
       state('LeftToQue', style({ top: '190px' })),
       state('RightToQue', style({ top: '190px' })),
-      transition('* => LeftToQue', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => LeftToDisplay', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#00000000', top: '0', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => RightToQue', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => RightToDisplay', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#00000000', top: '0', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen1LeftQ(),
+      Transitions.screen1LeftD(),
+      Transitions.screen1RightQ(),
+      Transitions.screen1RightD(),
     ]),
     trigger('screen2', [
       state('LeftToQue', style({ top: '-155px' })),
       state('RightToQue', style({ top: '-155px' })),
-      transition('* => LeftToQue', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#00000000', top: '-155px', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => LeftToDisplay', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => RightToQue', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#00000000', top: '-155px', offset: 0 }),
-            style({ color: '#000000', offset: 1 }),
-          ])
-        ),
-      ]),
-      transition('* => RightToDisplay', [
-        animate(
-          '500ms',
-          keyframes([
-            style({ color: '#000000', offset: 0 }),
-            style({ color: '#00000000', offset: 1 }),
-          ])
-        ),
-      ]),
+      Transitions.screen2LeftQ(),
+      Transitions.screen2LeftD(),
+      Transitions.screen2RightQ(),
+      Transitions.screen2RightD(),
     ]),
   ],
 })
