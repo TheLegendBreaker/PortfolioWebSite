@@ -1,5 +1,12 @@
 <div class="display-container">
-  <div id="screen1" [@screen1]="screen" [routerLink]="['project/', display[0]]">
+  <div
+    id="screen1"
+    [@screen1]="screen"
+    [routerLink]="['project/', display[0]]"
+    [@hover]="screen1Hover"
+    (mouseenter)="hovered()"
+    (mouseleave)="unHovered()"
+  >
     <img
       *ngIf="display[0] !== null"
       src="{{ display[1] }}"
@@ -9,7 +16,14 @@
     <!-- <app-display[1]-project></app-display[1]-project> -->
   </div>
 
-  <div id="screen2" [@screen2]="screen" [routerLink]="link">
+  <div
+    id="screen2"
+    [@screen2]="screen"
+    [routerLink]="link"
+    [@hover]="screen2Hover"
+    (mouseenter)="screen2Hovered()"
+    (mouseleave)="screen2UnHovered()"
+  >
     <img *ngIf="que[0]" src="{{ que[1] }}" alt="{{ que[1] }}" />
     <!-- <img *ngIf="!display[2]" src="{{ screen2[1] }}" alt="{{ screen2[1] }}" /> -->
     <div id="elevator-pitch" *ngIf="display[0] === null">

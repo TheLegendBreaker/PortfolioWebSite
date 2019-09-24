@@ -9,7 +9,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 export class LandingPageComponent implements OnInit, OnDestroy {
   // set up a property to display the project blurb
   blurb: string;
-  lastDirection = 'Up';
+  lastDirection: string;
   links: any[] = [];
   navPress = false;
   autoNav: any;
@@ -20,12 +20,13 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.projServ.useLinks$.subscribe(links => {
       this.links = links;
     });
-    this.autoScroll();
   }
 
   scroll(direction: string) {
     console.log('scroll on landing page');
+    clearInterval(this.autoNav);
     this.clientNavPress();
+    this.autoScroll();
     this.lastDirection = direction;
     this.projServ.scroll(direction);
   }
@@ -35,7 +36,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       if (!this.navPress) {
         this.projServ.scroll(this.lastDirection);
       }
-    }, 5000);
+    }, 3000);
   }
 
   private clientNavPress() {

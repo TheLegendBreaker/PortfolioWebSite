@@ -4,6 +4,7 @@ import { trigger, state, style } from '@angular/animations';
 import { Subscription } from 'rxjs';
 
 import { Transitions } from './reel.transition';
+import { focusTransitions } from './reel.focus.transition';
 
 @Component({
   selector: 'app-reel',
@@ -26,6 +27,14 @@ import { Transitions } from './reel.transition';
       Transitions.screen2DownQ(),
       Transitions.screen2DownD(),
     ]),
+    trigger('hover', [
+      state(
+        'hovered',
+        style({ left: '22.5px', height: '425px', width: '625px' })
+      ),
+      focusTransitions.hovered(),
+      focusTransitions.unHovered(),
+    ]),
   ],
 })
 export class ReelComponent implements OnInit, OnDestroy {
@@ -35,6 +44,9 @@ export class ReelComponent implements OnInit, OnDestroy {
   que: any[] = [];
   display: any[] = [];
   link: any[] = [];
+
+  screen1Hover: string;
+  screen2Hover: string;
 
   subscription: Subscription;
 
@@ -66,5 +78,18 @@ export class ReelComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  hovered() {
+    this.screen1Hover = 'hovered';
+  }
+  unHovered() {
+    this.screen1Hover = 'unhovered';
+  }
+  screen2Hovered() {
+    this.screen2Hover = 'hovered';
+  }
+  screen2UnHovered() {
+    this.screen2Hover = 'unhovered';
   }
 }
