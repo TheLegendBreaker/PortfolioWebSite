@@ -45,7 +45,6 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  ends = false;
   constructor(
     private readonly projServ: ProjectService,
     private readonly route: ActivatedRoute

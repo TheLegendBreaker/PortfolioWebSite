@@ -11,8 +11,10 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   blurb: string;
   lastDirection: string;
   links: any[] = [];
+  disable = false;
   navPress = false;
   autoNav: any;
+  disabler: any;
   constructor(private readonly projServ: ProjectsService) {}
 
   ngOnInit() {
@@ -25,10 +27,12 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   scroll(direction: string) {
     console.log('scroll on landing page');
     clearInterval(this.autoNav);
-    this.clientNavPress();
     this.autoScroll();
+    if (!this.disable) {
+      this.clientNavPress();
+      this.projServ.scroll(direction);
+    }
     this.lastDirection = direction;
-    this.projServ.scroll(direction);
   }
   // build out an autoScroll for the change of reel state.
   private autoScroll() {
@@ -40,10 +44,22 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
 
   private clientNavPress() {
+    this.disabled();
     this.navPress = true;
     setInterval(() => {
       this.navPress = false;
     }, 5000);
+  }
+  private disabled(): void {
+    this.disable = true;
+    this.clearDisable();
+    this.disabler = setInterval(() => {
+      this.disable = false;
+      this.clearDisable();
+    }, 310);
+  }
+  private clearDisable(): void {
+    clearInterval(this.disabler);
   }
   ngOnDestroy() {
     clearInterval(this.autoNav);
