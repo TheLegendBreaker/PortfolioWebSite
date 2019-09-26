@@ -27,7 +27,7 @@ export class ProjectService {
   screen1 = false;
   calDisplayed = true;
 
-  direction: string = null;
+  direction: string;
   constructor() {}
 
   initShowReel(project: LandingNode): void {
@@ -67,11 +67,6 @@ export class ProjectService {
       this.direction,
     ]);
   }
-  private callToActionState() {
-    console.log('here is direction from the cal state', this.direction);
-    this.directionSource.next(this.direction);
-    // this.chooseScreen();
-  }
   private ctaToDisplay(direction: string) {
     this.directionSource.next(`${direction}ToDisplay`);
   }
@@ -80,9 +75,7 @@ export class ProjectService {
   }
 
   scroll(direction: string): void {
-    console.log('end', this.isEnd(direction));
     if (this.isEnd(direction)) {
-      console.log('if triggered');
       this.scrollAnimation(direction);
       this.ctaToDisplay(direction);
       this.chooseBlurb();
@@ -92,7 +85,6 @@ export class ProjectService {
       this.rotateLandingReel(direction);
       this.calDisplayed = true;
     } else if (this.calDisplayed) {
-      console.log('else if triggered');
       this.scrollAnimation(direction);
       this.ctaToQue(direction);
       this.chooseBlurb();
@@ -101,24 +93,13 @@ export class ProjectService {
       this.chooseScreen();
       this.calDisplayed = false;
     } else {
-      console.log('else triggered');
       this.normalScroll(direction);
     }
   }
 
   private normalScroll(direction: string): void {
     this.rotateLandingReel(direction);
-    // console.log(`is end`, this.isEnd(direction));
-
     this.scrollAnimation(direction);
-    this.chooseBlurb();
-    this.chooseImage();
-    this.chooseLinks();
-    this.chooseScreen();
-  }
-  private calScroll(direction: string): void {
-    this.scrollAnimation(direction);
-    this.callToActionState();
     this.chooseBlurb();
     this.chooseImage();
     this.chooseLinks();
@@ -145,10 +126,13 @@ export class ProjectService {
   }
   isEnd(direction: string): boolean {
     // what to do when this is true?
+    let isEnd: boolean;
+
     if (direction === 'Left') {
-      return this.que[0].next.next.place === 0;
+      isEnd = this.que[0].next.place === 0;
     } else if (direction === 'Right') {
-      return this.que[1].previous.place === 0;
+      isEnd = this.que[1].place === 0;
     }
+    return (isEnd = isEnd ? !this.calDisplayed : false);
   }
 }

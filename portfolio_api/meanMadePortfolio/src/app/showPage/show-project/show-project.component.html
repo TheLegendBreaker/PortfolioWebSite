@@ -15,7 +15,11 @@
 
     <app-dedicated-reel (click)="pause()"></app-dedicated-reel>
 
-    <div (click)="scroll('Right')" class="direction-button-listener">
+    <div
+      disabled="!disablePress"
+      (click)="scroll('Right')"
+      class="direction-button-listener"
+    >
       <button class="right-button direction-button">
         right
       </button>

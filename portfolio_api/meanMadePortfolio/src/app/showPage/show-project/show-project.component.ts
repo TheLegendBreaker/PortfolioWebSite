@@ -14,9 +14,10 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
   links: any[];
   display: any[];
   autoNav: any;
+  disabler: any;
 
   navPress = false;
-  ends = false;
+  disablePress = false;
 
   lastDirection = 'Right';
   errors: string;
@@ -40,29 +41,37 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
   scroll(direction: string): void {
     this.pause();
     this.autoScroll();
-    this.projServ.scroll(direction);
-    this.clientNavPress();
+    if (!this.disablePress) {
+      this.projServ.scroll(direction);
+      this.clientNavPress();
+    }
     this.lastDirection = direction;
-    console.log(`direction`, direction);
-
-    // will need to make a helper function to do something when at one end of the dll.
-    // it could flip a boolean that is checked in the tag of the app
-    // would also need to figure out how to pause and handle the service when this component is up.
-    // problems is how do I now if I am at the edge?
   }
 
-  private autoScroll() {
+  private autoScroll(): void {
     this.autoNav = setInterval(() => {
       if (!this.navPress) {
         this.projServ.scroll(this.lastDirection);
       }
     }, 3500);
   }
-  private clientNavPress() {
+  private clientNavPress(): void {
+    this.disabled();
     this.navPress = true;
     setInterval(() => {
       this.navPress = false;
     }, 8000);
+  }
+  private disabled(): void {
+    this.disablePress = true;
+    this.clearDisable();
+    this.disabler = setInterval(() => {
+      this.disablePress = false;
+      this.clearDisable();
+    }, 510);
+  }
+  private clearDisable(): void {
+    clearInterval(this.disabler);
   }
   pause(): void {
     clearInterval(this.autoNav);
