@@ -11,8 +11,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./call-to-action.component.css'],
   animations: [
     trigger('callToAction', [
-      state('LeftToDisplay', style({ left: '10px', bottom: '1060px' })),
-      state('RightToDisplay', style({ left: '10px', bottom: '1060px' })),
+      state('LeftToDisplay', style({ left: '10px', bottom: '1075px' })),
+      state('RightToDisplay', style({ left: '10px', bottom: '1075px' })),
       Transitions.leftToQue(),
       Transitions.leftToDisplay(),
       Transitions.rightToQue(),

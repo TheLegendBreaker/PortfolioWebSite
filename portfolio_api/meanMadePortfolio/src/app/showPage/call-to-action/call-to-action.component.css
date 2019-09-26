@@ -1,14 +1,90 @@
+.send-resume {
+  margin-top: 15px;
+  /* margin-left: 24%; */
+}
+h1 {
+  vertical-align: middle;
+  display: inline-block;
+}
+section {
+  display: inline-block;
+}
 .screen {
+  padding-top: 20px;
   position: relative;
   bottom: 1625px;
   left: 10px;
-  height: 500px;
+  height: 480px;
   width: 1100px;
 
   border: solid #ff5555 15px;
   background-color: #ffdd55;
 }
-/* .display {
-  left: 10px;
-  bottom: 1060px;
-} */
+.next {
+  vertical-align: middle;
+  display: inline-block;
+  width: 260px;
+  height: 95px;
+  border: black solid 15px;
+
+  text-align: left;
+  background-color: #093d8b;
+  border-radius: 20px;
+  outline: none;
+}
+.next span {
+  padding: 0 7px;
+  position: relative;
+  bottom: 15px;
+  font-size: 34px;
+
+  border-right: solid black 15px;
+  border-bottom: solid black 15px;
+}
+
+.contact {
+  vertical-align: middle;
+  display: inline-block;
+  width: 190px;
+  height: 95px;
+  border: black solid 15px;
+
+  text-align: left;
+  background-color: #093d8b;
+  border-radius: 20px;
+  outline: none;
+}
+.contact span {
+  padding: 0 7px;
+  position: relative;
+  bottom: 15px;
+  font-size: 34px;
+
+  border-right: solid black 15px;
+  border-bottom: solid black 15px;
+}
+.home {
+  vertical-align: middle;
+  display: inline-block;
+  width: 165px;
+  height: 95px;
+  border: black solid 15px;
+
+  text-align: left;
+  background-color: #a53535;
+  border-radius: 20px;
+  outline: none;
+}
+.home span {
+  padding: 0 7px;
+  position: relative;
+  bottom: 15px;
+  font-size: 34px;
+
+  color: white;
+  border-right: solid black 15px;
+  border-bottom: solid black 15px;
+}
+div {
+  margin: 15px 0;
+}
