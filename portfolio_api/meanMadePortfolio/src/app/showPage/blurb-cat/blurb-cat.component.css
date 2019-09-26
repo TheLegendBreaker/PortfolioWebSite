@@ -1,0 +1,12 @@
+section {
+  background: #80b3ff;
+  position: relative;
+}
+p {
+  height: 115px;
+  width: 100%;
+}
+/*
+.display {
+  bottom: 150px;
+} */

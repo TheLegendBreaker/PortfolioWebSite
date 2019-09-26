@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style } from '@angular/animations';
+
 import { Transitions } from './call-to-action.transition';
 import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
