@@ -72,17 +72,33 @@ export class ProjectService {
     this.directionSource.next(this.direction);
     // this.chooseScreen();
   }
+  private ctaToDisplay(direction: string) {
+    this.directionSource.next(`${direction}ToDisplay`);
+  }
+  private ctaToQue(direction: string) {
+    this.directionSource.next(`${direction}ToQue`);
+  }
+
   scroll(direction: string): void {
     console.log('end', this.isEnd(direction));
     if (this.isEnd(direction)) {
       console.log('if triggered');
-      this.calScroll(direction);
-      // rotateLandingReel messes with callScroll some how
+      this.scrollAnimation(direction);
+      this.ctaToDisplay(direction);
+      this.chooseBlurb();
+      this.chooseImage();
+      this.chooseLinks();
+      this.chooseScreen();
       this.rotateLandingReel(direction);
       this.calDisplayed = true;
     } else if (this.calDisplayed) {
       console.log('else if triggered');
-      this.calScroll(direction);
+      this.scrollAnimation(direction);
+      this.ctaToQue(direction);
+      this.chooseBlurb();
+      this.chooseImage();
+      this.chooseLinks();
+      this.chooseScreen();
       this.calDisplayed = false;
     } else {
       console.log('else triggered');
