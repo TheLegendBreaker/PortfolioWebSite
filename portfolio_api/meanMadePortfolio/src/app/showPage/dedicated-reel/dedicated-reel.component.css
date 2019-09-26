@@ -35,3 +35,7 @@ div {
   vertical-align: middle;
   display: inline-block;
 }
+
+.display {
+  bottom: 1200px;
+}

@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+
+import { ProjectResolver } from './resolvers/project.resolver';
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material';
 import * as fromLandingPage from './LandingPage';
@@ -11,7 +13,6 @@ import * as fromSendResume from './sendResume';
 import { AppComponent } from './app.component';
 import * as fromContact from './contact-page';
 import * as fromShowPage from './showPage';
-import { ProjectResolver } from './resolvers/project.resolver';
 
 @NgModule({
   declarations: [

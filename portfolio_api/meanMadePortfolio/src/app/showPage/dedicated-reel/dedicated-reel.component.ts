@@ -36,7 +36,7 @@ import { Transitions } from './dedicated-reel.transition';
   ],
 })
 export class DedicatedReelComponent implements OnInit, OnDestroy {
-  screen: string;
+  callToAction: string;
   direction: string;
 
   que: any[] = [];
@@ -45,6 +45,7 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
+  ends = false;
   constructor(
     private readonly projServ: ProjectService,
     private readonly route: ActivatedRoute

@@ -1,0 +1,14 @@
+.screen {
+  position: relative;
+  bottom: 1625px;
+  left: 10px;
+  height: 500px;
+  width: 1100px;
+
+  border: solid #ff5555 15px;
+  background-color: #ffdd55;
+}
+/* .display {
+  left: 10px;
+  bottom: 1060px;
+} */

@@ -1,17 +1,23 @@
-import { keyframes, animate, transition, style } from '@angular/animations';
+import {
+  keyframes,
+  animate,
+  transition,
+  style,
+  AnimationTransitionMetadata,
+} from '@angular/animations';
 
 export const Transitions = {
-  screen1LeftQ() {
+  screen1LeftQ(): AnimationTransitionMetadata {
     return transition('* => LeftToQue', [
       animate('500ms', keyframes([style({ right: '1170px', offset: 1 })])),
     ]);
   },
-  screen1RightQ() {
+  screen1RightQ(): AnimationTransitionMetadata {
     return transition('* => RightToQue', [
       animate('500ms', keyframes([style({ left: '1170px', offset: 1 })])),
     ]);
   },
-  screen1LeftD() {
+  screen1LeftD(): AnimationTransitionMetadata {
     return transition('* => LeftToDisplay', [
       animate(
         '500ms',
@@ -22,7 +28,7 @@ export const Transitions = {
       ),
     ]);
   },
-  screen1RightD() {
+  screen1RightD(): AnimationTransitionMetadata {
     return transition('* => RightToDisplay', [
       animate(
         '500ms',
@@ -34,17 +40,17 @@ export const Transitions = {
     ]);
   },
 
-  screen2LeftD() {
+  screen2LeftD(): AnimationTransitionMetadata {
     return transition('* => LeftToDisplay', [
       animate('500ms', keyframes([style({ right: '1170px', offset: 1 })])),
     ]);
   },
-  screen2RightD() {
+  screen2RightD(): AnimationTransitionMetadata {
     return transition('* => RightToDisplay', [
       animate('500ms', keyframes([style({ left: '1170px', offset: 1 })])),
     ]);
   },
-  screen2LeftQ() {
+  screen2LeftQ(): AnimationTransitionMetadata {
     return transition('* => LeftToQue', [
       animate(
         '500ms',
@@ -55,7 +61,7 @@ export const Transitions = {
       ),
     ]);
   },
-  screen2RightQ() {
+  screen2RightQ(): AnimationTransitionMetadata {
     return transition('* => RightToQue', [
       animate(
         '500ms',

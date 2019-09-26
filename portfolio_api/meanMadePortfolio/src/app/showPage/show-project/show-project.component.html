@@ -13,7 +13,7 @@
       <button class="left-button direction-button">left</button>
     </div>
 
-    <app-dedicated-reel></app-dedicated-reel>
+    <app-dedicated-reel (click)="pause()"></app-dedicated-reel>
 
     <div (click)="scroll('Right')" class="direction-button-listener">
       <button class="right-button direction-button">
