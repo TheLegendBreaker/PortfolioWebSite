@@ -13,6 +13,7 @@ import * as fromSendResume from './sendResume';
 import { AppComponent } from './app.component';
 import * as fromContact from './contact-page';
 import * as fromShowPage from './showPage';
+import * as fromNav from './nav';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import * as fromShowPage from './showPage';
     ...fromShowResume.components,
     ...fromContact.components,
     ...fromSendResume.components,
+    ...fromNav.components,
   ],
   imports: [
     FormsModule,

@@ -31,7 +31,6 @@ export class ProjectService {
   constructor() {}
 
   initShowReel(project: LandingNode): void {
-    this.dll = this.dll.DummyDLL();
     this.display = project;
     this.que[0] = this.display.previous;
     this.que[1] = this.display.next;

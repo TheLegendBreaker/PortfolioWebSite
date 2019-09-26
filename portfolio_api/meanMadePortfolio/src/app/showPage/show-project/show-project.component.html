@@ -1,43 +1,34 @@
-<div class="wrap">
-  <button
-    class="primary-button teal resume"
-    [routerLink]="['/portfolio/resume']"
-  >
-    <span class="teal basic">R</span>
-  </button>
-  <button class="primary-button red home" [routerLink]="['']">
-    <span class="red basic">H</span>
-  </button>
-  <main>
-    <div (click)="scroll('Left')" class="direction-button-listener">
-      <button class="left-button direction-button">left</button>
-    </div>
+<button class="primary-button teal resume" [routerLink]="['/portfolio/resume']">
+  <span class="teal basic">R</span>
+</button>
+<button class="primary-button red home" [routerLink]="['']">
+  <span class="red basic">H</span>
+</button>
+<main>
+  <div (click)="scroll('Left')" class="direction-button-listener">
+    <button class="left-button direction-button">left</button>
+  </div>
 
-    <app-dedicated-reel (click)="pause()"></app-dedicated-reel>
+  <app-dedicated-reel (click)="pause()"></app-dedicated-reel>
 
-    <div
-      disabled="!disablePress"
-      (click)="scroll('Right')"
-      class="direction-button-listener"
-    >
-      <button class="right-button direction-button">
-        right
+  <div (click)="scroll('Right')" class="direction-button-listener">
+    <button disabled="disablePress" class="right-button direction-button">
+      right
+    </button>
+  </div>
+</main>
+<article>
+  <app-dedicated-display-content></app-dedicated-display-content>
+  <aside>
+    <div class="stacked top">
+      <button class="primary-button blue">
+        <span class="blue basic">G</span>
       </button>
     </div>
-  </main>
-  <article>
-    <app-dedicated-display-content></app-dedicated-display-content>
-    <aside>
-      <div class="stacked top">
-        <button class="primary-button blue">
-          <span class="blue basic">G</span>
-        </button>
-      </div>
-      <div class="stacked">
-        <button class="primary-button blue">
-          <span class="blue basic">C</span>
-        </button>
-      </div>
-    </aside>
-  </article>
-</div>
+    <div class="stacked">
+      <button class="primary-button blue">
+        <span class="blue basic">C</span>
+      </button>
+    </div>
+  </aside>
+</article>
