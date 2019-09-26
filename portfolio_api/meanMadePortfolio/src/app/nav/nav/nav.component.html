@@ -1,3 +1,20 @@
-<nav>
-  need to figure out how I want this to look
-</nav>
+<mat-icon
+  class="nav-icon"
+  svgIcon="nav"
+  mat-button
+  [matMenuTriggerFor]="rootMenu"
+></mat-icon>
+<mat-menu #rootMenu="matMenu" class="menu" xPosition="before">
+  <button mat-menu-item>Home</button>
+  <button mat-menu-item>Contact</button>
+  <button mat-menu-item>Resume</button>
+  <button mat-menu-item>GitHub</button>
+  <button mat-menu-item>LinkedIn</button>
+  <p [matMenuTriggerFor]="subMenu" mat-menu-item>projects</p>
+</mat-menu>
+<mat-menu #subMenu="matMenu" class="menu" xPosition="before">
+  <button mat-menu-item>project 1</button>
+  <button mat-menu-item>project 2</button>
+  <button mat-menu-item>project 2</button>
+  <button mat-menu-item>project 2</button>
+</mat-menu>
