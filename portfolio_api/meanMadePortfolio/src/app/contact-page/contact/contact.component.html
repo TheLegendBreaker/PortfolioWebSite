@@ -1,71 +1,69 @@
-<div class="wrap">
-  <header>
-    <h1>CONTACT</h1>
-  </header>
-  <section>
-    <form #emailForm="ngForm">
-      <label for="name" class="form red">name</label>
-      <input
-        type="text"
-        class="form"
-        name="name"
-        required
-        [ngModel]="email.senderName"
-      />
+<header>
+  <h1>CONTACT</h1>
+</header>
+<section>
+  <form #emailForm="ngForm">
+    <label for="name" class="form red">name</label>
+    <input
+      type="text"
+      class="form"
+      name="name"
+      required
+      [ngModel]="email.senderName"
+    />
 
-      <label for="from" class="form red">email</label>
-      <input
-        type="email"
-        name="from"
-        class="form "
-        required
-        [ngModel]="email.from"
-      />
+    <label for="from" class="form red">email</label>
+    <input
+      type="email"
+      name="from"
+      class="form "
+      required
+      [ngModel]="email.from"
+    />
 
-      <label for="content" class="form red">message</label>
-      <textarea
-        name="content"
-        cols="30"
-        rows="5"
-        class="form"
-        [ngModel]="email.content"
-      ></textarea>
+    <label for="content" class="form red">message</label>
+    <textarea
+      name="content"
+      cols="30"
+      rows="5"
+      class="form"
+      [ngModel]="email.content"
+    ></textarea>
 
-      <app-send-resume-button></app-send-resume-button>
+    <app-send-resume-button></app-send-resume-button>
 
-      <button type="submit" class="send" (click)="contact($event, emailForm)">
-        <span class="blue">
-          send
-        </span>
-      </button>
-    </form>
-  </section>
+    <button type="submit" class="send" (click)="contact($event, emailForm)">
+      <span class="blue">
+        send
+      </span>
+    </button>
+  </form>
+</section>
 
-  <aside>
-    <nav>
-      <button class="primary-button blue">
-        <span class="blue basic">
-          G
-        </span>
-      </button>
-      <button class="primary-button blue">
-        <span class="blue basic">
-          L
-        </span>
-      </button>
-      <button class="primary-button teal" [routerLink]="['/portfolio/resume']">
-        <span class="teal basic">
-          R
-        </span>
-      </button>
-      <button class="primary-button red" [routerLink]="['']">
-        <span class="red basic">
-          H
-        </span>
-      </button>
-    </nav>
-    <div>
-      <p></p>
-    </div>
-  </aside>
-</div>
+<aside>
+  <div>
+    <p></p>
+  </div>
+  <nav>
+    <button class="primary-button blue">
+      <span class="blue basic">
+        G
+      </span>
+    </button>
+    <button class="primary-button blue">
+      <span class="blue basic">
+        L
+      </span>
+    </button>
+    <button class="primary-button teal" [routerLink]="['/portfolio/resume']">
+      <span class="teal basic">
+        R
+      </span>
+    </button>
+    <button class="primary-button red" [routerLink]="['']">
+      <span class="red basic">
+        H
+      </span>
+    </button>
+  </nav>
+</aside>
