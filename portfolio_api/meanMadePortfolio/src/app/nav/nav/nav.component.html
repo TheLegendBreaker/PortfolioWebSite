@@ -4,15 +4,15 @@
   [matMenuTriggerFor]="rootMenu"
 ></mat-icon>
 <mat-menu #rootMenu="matMenu" class="menu" xPosition="before">
-  <button mat-menu-item>Home</button>
-  <button mat-menu-item>Contact</button>
-  <button mat-menu-item>Resume</button>
-  <button mat-menu-item>GitHub</button>
-  <button mat-menu-item>LinkedIn</button>
+  <button mat-menu-item [routerLink]="['']">Home</button>
+  <button mat-menu-item [routerLink]="['/portfolio/contact']">Contact</button>
+  <button mat-menu-item [routerLink]="['/portfolio/resume']">Resume</button>
+  <button mat-menu-item><a>GitHub</a></button>
+  <button mat-menu-item><a>LinkedIn</a></button>
   <p [matMenuTriggerFor]="subMenu" mat-menu-item>projects</p>
 </mat-menu>
 <mat-menu #subMenu="matMenu" class="menu" xPosition="before">
-  <button mat-menu-item>project 1</button>
+  <button mat-menu-item [routerLink]="['']">project 1</button>
   <button mat-menu-item>project 2</button>
   <button mat-menu-item>project 2</button>
   <button mat-menu-item>project 2</button>

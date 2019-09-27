@@ -1,21 +1,10 @@
-button {
-  position: relative;
-  z-index: 10;
-}
-.resume {
-  top: 35px;
-  left: 55px;
-}
-.home {
-  top: 35px;
-  left: 1320px;
-}
 main {
   display: inline-block;
   position: relative;
   bottom: 40px;
   padding: 0 2.5%;
-  margin-top: 20px;
+  margin-top: 80px;
+  z-index: 0;
 }
 article {
   position: relative;
