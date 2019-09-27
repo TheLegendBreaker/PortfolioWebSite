@@ -2,11 +2,16 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
 
 @Component({
   selector: 'app-show-project',
   templateUrl: './show-project.component.html',
   styleUrls: ['./show-project.component.css'],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: tooltipConfig },
+  ],
 })
 export class ShowProjectComponent implements OnInit, OnDestroy {
   subscription: Subscription;

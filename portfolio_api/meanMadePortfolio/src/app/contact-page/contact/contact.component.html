@@ -45,22 +45,36 @@
     <p></p>
   </div>
   <nav>
-    <button class="primary-button blue">
+    <button
+      matTooltip="click to visit hector's github"
+      class="primary-button blue"
+    >
       <span class="blue basic">
         G
       </span>
     </button>
-    <button class="primary-button blue">
+    <button
+      matTooltip="click to visit hector's linkedin"
+      class="primary-button blue"
+    >
       <span class="blue basic">
         L
       </span>
     </button>
-    <button class="primary-button teal" [routerLink]="['/portfolio/resume']">
+    <button
+      matTooltip="click to see hector's resume"
+      class="primary-button teal"
+      [routerLink]="['/portfolio/resume']"
+    >
       <span class="teal basic">
         R
       </span>
     </button>
-    <button class="primary-button red" [routerLink]="['']">
+    <button
+      matTooltip="navigate to the landing page"
+      class="primary-button red"
+      [routerLink]="['']"
+    >
       <span class="red basic">
         H
       </span>

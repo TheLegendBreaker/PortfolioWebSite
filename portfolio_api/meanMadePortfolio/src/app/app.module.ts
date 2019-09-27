@@ -7,6 +7,7 @@ import {
   MatDialogModule,
   MatMenuModule,
   MatIconModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 import { ProjectResolver } from './resolvers/project.resolver';
@@ -30,11 +31,12 @@ import * as fromNav from './nav';
     ...fromNav.components,
   ],
   imports: [
-    FormsModule,
-    BrowserModule,
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
+    MatTooltipModule,
+    FormsModule,
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

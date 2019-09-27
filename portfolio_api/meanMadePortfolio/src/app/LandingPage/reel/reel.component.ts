@@ -1,10 +1,12 @@
 import { ProjectsService } from 'src/app/services/projects.service';
-import { Component, OnInit, Output, OnDestroy } from '@angular/core';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style } from '@angular/animations';
 import { Subscription } from 'rxjs';
 
-import { Transitions } from './reel.transition';
+import { tooltipConfig } from 'src/app/toolTipConfig/reel.tooltip.config.delay';
 import { focusTransitions } from './reel.focus.transition';
+import { Transitions } from './reel.transition';
 
 @Component({
   selector: 'app-reel',
@@ -35,6 +37,9 @@ import { focusTransitions } from './reel.focus.transition';
       focusTransitions.hovered(),
       focusTransitions.unHovered(),
     ]),
+  ],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: tooltipConfig },
   ],
 })
 export class ReelComponent implements OnInit, OnDestroy {

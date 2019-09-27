@@ -1,3 +1,8 @@
+::ng-deep .mat-tooltip {
+  border: solid black 8px;
+  font-size: 16px;
+  background-color: #ff5555;
+}
 nav {
   padding: 20px 135px;
   padding-top: 35px;

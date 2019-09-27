@@ -1,10 +1,15 @@
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: tooltipConfig },
+  ],
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
   // set up a property to display the project blurb

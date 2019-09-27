@@ -10,13 +10,17 @@
     <app-landing-blurb> </app-landing-blurb>
   </div>
   <nav>
-    <button class="primary-button blue" [routerLink]="links[0]">
+    <button
+      class="primary-button blue"
+      [routerLink]="links[0]"
+      matTooltip="visit hector's github"
+    >
       <span class="blue basic">G</span>
     </button>
-    <button class="primary-button blue">
+    <button class="primary-button blue" matTooltip="visit hector's linkedin">
       <span class="blue basic">L</span>
     </button>
-    <button class="primary-button blue">
+    <button class="primary-button blue" matTooltip="contact hector">
       <span class="blue basic">C</span>
     </button>
   </nav>

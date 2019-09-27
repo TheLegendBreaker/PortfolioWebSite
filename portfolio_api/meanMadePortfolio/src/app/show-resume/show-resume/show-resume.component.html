@@ -2,10 +2,18 @@
   <div>
     <app-shw-res-send-res-bttn></app-shw-res-send-res-bttn>
   </div>
-  <button class="primary-button teal" [routerLink]="['/portfolio/contact']">
+  <button
+    matTooltip="contact hector"
+    class="primary-button teal"
+    [routerLink]="['/portfolio/contact']"
+  >
     <span class="basic teal contact">C</span>
   </button>
-  <button class="primary-button red home" [routerLink]="['']">
+  <button
+    matTooltip="navigate to landing page"
+    class="primary-button red home"
+    [routerLink]="['']"
+  >
     <span class="basic red">
       H
     </span>

@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from 'src/app/services/email.service';
 import { Email } from 'src/app/interface/index';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: tooltipConfig },
+  ],
 })
 export class ContactComponent implements OnInit {
   email = new Email();
