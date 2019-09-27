@@ -1,4 +1,4 @@
-<div class="wrap">
+<main class="wrap" [@routeAnimation]="routeAnimationState(outlet)">
   <app-nav></app-nav>
-  <router-outlet></router-outlet>
-</div>
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
