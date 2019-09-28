@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RouteAnimationsService {
-  state: string;
+  state = 'next';
   constructor() {}
   changeState() {
     this.state = this.state === 'next' ? 'next1' : 'next';

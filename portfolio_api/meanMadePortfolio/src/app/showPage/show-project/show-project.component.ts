@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProjectService } from 'src/app/services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
+import { RouteAnimationsService } from 'src/app/services/route-animations.service';
 
 @Component({
   selector: 'app-show-project',
@@ -29,7 +30,9 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly projServ: ProjectService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly routeAnimationServ: RouteAnimationsService
   ) {
     this.subscription = projServ.useLinks$.subscribe(
       (links: any[]) => {
@@ -80,6 +83,10 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
   }
   pause(): void {
     clearInterval(this.autoNav);
+  }
+  private navToContact(): void {
+    this.routeAnimationServ.changeState();
+    this.router.navigateByUrl('/portfolio/contact');
   }
   ngOnDestroy(): void {
     this.projServ.direction = null;

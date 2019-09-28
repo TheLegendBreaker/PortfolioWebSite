@@ -5,14 +5,14 @@
   <button
     matTooltip="contact hector"
     class="primary-button teal"
-    [routerLink]="['/portfolio/contact']"
+    (click)="navToContact()"
   >
     <span class="basic teal contact">C</span>
   </button>
   <button
     matTooltip="navigate to landing page"
     class="primary-button red home"
-    [routerLink]="['']"
+    (click)="navToHome()"
   >
     <span class="basic red">
       H

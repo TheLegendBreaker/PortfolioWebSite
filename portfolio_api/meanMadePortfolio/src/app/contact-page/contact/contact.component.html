@@ -64,7 +64,7 @@
     <button
       matTooltip="click to see hector's resume"
       class="primary-button teal"
-      [routerLink]="['/portfolio/resume']"
+      (click)="navToResume()"
     >
       <span class="teal basic">
         R
@@ -73,7 +73,7 @@
     <button
       matTooltip="navigate to the landing page"
       class="primary-button red"
-      [routerLink]="['']"
+      (click)="navToHome()"
     >
       <span class="red basic">
         H

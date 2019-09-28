@@ -2,6 +2,8 @@ import { ProjectsService } from 'src/app/services/projects.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
+import { RouteAnimationsService } from 'src/app/services/route-animations.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -20,7 +22,11 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   navPress = false;
   autoNav: any;
   disabler: any;
-  constructor(private readonly projServ: ProjectsService) {}
+  constructor(
+    private readonly projServ: ProjectsService,
+    private readonly routeAnimationServ: RouteAnimationsService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.links = [`https://github.com/TheLegendBreaker`];
@@ -68,5 +74,9 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     clearInterval(this.autoNav);
+  }
+  private navToResume() {
+    this.routeAnimationServ.changeState();
+    this.router.navigateByUrl('/portfolio/resume');
   }
 }
