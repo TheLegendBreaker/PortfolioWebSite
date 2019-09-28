@@ -7,53 +7,33 @@ import {
   animateChild,
   animate,
   keyframes,
+  AnimationMetadata,
+  AnimationTransitionMetadata,
 } from '@angular/animations';
 
-export const fuzzy = trigger('routeAnimation', [
-  transition('next <=> next', [
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          // width: '100%',
-          // height: '100%',
-          // left: 0,
-          opacity: 0,
-          transform: 'scale(0) translateY(100%)',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(
-      ':enter',
-      [
-        animate(
-          '1000ms',
-          keyframes([
-            style({
-              'background-image': `url('../assets/router_animation/routeTransition.gif')`,
-              'background-size': '100%',
-              'z-index': 'top',
-              opacity: 1,
-              transform: 'scale(1) translateY(0)',
-              offset: 0,
-            }),
-            style({
-              'background-image': `url('../assets/router_animation/routeTransition.gif')`,
-              'background-size': '100%',
-              'z-index': 'top',
-              opacity: 1,
-              transform: 'scale(1) translateY(0)',
-              offset: 0.9,
-            }),
-            style({ 'background-image': 'none', 'z-index': 'auto', offset: 1 }),
-          ])
-        ),
-      ],
-      {
-        optional: true,
-      }
-    ),
-  ]),
-]);
+export const Transitions = {
+  next1(): AnimationTransitionMetadata {
+    return transition('next1 => next', [
+      animate(
+        '250ms',
+        keyframes([
+          style({ opacity: 1, transform: 'scale(1)', offset: 0 }),
+          style({ opacity: 1, offset: 0.9 }),
+          style({ opacity: 0, offset: 1 }),
+        ])
+      ),
+    ]);
+  },
+  next(): AnimationTransitionMetadata {
+    return transition('next => next1', [
+      animate(
+        '250ms',
+        keyframes([
+          style({ opacity: 1, transform: 'scale(1)', offset: 0 }),
+          style({ opacity: 1, offset: 0.9 }),
+          style({ opacity: 0, offset: 1 }),
+        ])
+      ),
+    ]);
+  },
+};

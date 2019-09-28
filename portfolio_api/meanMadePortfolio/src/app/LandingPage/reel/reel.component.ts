@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { tooltipConfig } from 'src/app/toolTipConfig/reel.tooltip.config.delay';
 import { focusTransitions } from './reel.focus.transition';
 import { Transitions } from './reel.transition';
+import { Router } from '@angular/router';
+import { RouteAnimationsService } from 'src/app/services/route-animations.service';
 
 @Component({
   selector: 'app-reel',
@@ -48,14 +50,18 @@ export class ReelComponent implements OnInit, OnDestroy {
   // a que property to keep track of what state should be next
   que: any[] = [];
   display: any[] = [];
-  link: any[] = [];
+  link: string;
 
   screen1Hover: string;
   screen2Hover: string;
 
   subscription: Subscription;
 
-  constructor(private readonly projServ: ProjectsService) {
+  constructor(
+    private readonly projServ: ProjectsService,
+    private readonly router: Router,
+    private readonly routerAnimationServ: RouteAnimationsService
+  ) {
     this.subscription = projServ.displayImage$.subscribe(image => {
       // make sure the correct prop gets the newly displaying project
       if (this.projServ.screen1) {
@@ -65,7 +71,7 @@ export class ReelComponent implements OnInit, OnDestroy {
       } else {
         console.log('que if triggerd');
         this.que = image;
-        this.link = [`project/`, this.que[0]];
+        this.link = `/portfolio/project/${this.que[0]}`;
         this.screen = image[2];
       }
     });
@@ -79,7 +85,7 @@ export class ReelComponent implements OnInit, OnDestroy {
       `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
     ];
 
-    this.link = [`resume`];
+    this.link = `/portfolio/resume`;
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -96,5 +102,20 @@ export class ReelComponent implements OnInit, OnDestroy {
   }
   screen2UnHovered() {
     this.screen2Hover = 'unhovered';
+  }
+
+  private navToProjectDisplay(): void {
+    this.router.navigateByUrl(`/portfolio/project/${this.display[0]}`);
+  }
+  private navToProjectQue(): void {
+    this.router.navigateByUrl(this.link);
+  }
+  private navToProject(screen: string): void {
+    this.routerAnimationServ.changeState();
+    if (screen === 'display') {
+      this.navToProjectDisplay();
+    } else {
+      this.navToProjectQue();
+    }
   }
 }

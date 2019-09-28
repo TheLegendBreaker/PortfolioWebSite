@@ -1,6 +1,13 @@
-div {
+main {
   position: relative;
-  /* background-image: url('../assets/router_animation/routeTransition.gif');
+}
+div {
+  display: inline-block;
+  position: relative;
+  bottom: 930px;
+  width: 1500px;
+  background-image: url('../assets/router_animation/routeTransition.gif');
   background-size: 100%;
-  z-index: top; */
+  opacity: 0;
+  transform: scale(0);
 }

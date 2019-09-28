@@ -1,4 +1,8 @@
-<main class="wrap" [@routeAnimation]="routeAnimationState(outlet)">
+<main class="wrap">
   <app-nav></app-nav>
-  <router-outlet #outlet="outlet"></router-outlet>
+  <router-outlet></router-outlet>
 </main>
+<div
+  [@routeAnimation]="routeAnimationState()"
+  class="wrap transition-screen"
+></div>
