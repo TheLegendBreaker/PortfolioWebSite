@@ -18,7 +18,7 @@ from portfolio.views import ProjectDetails, Projects
 from contact.views import Email
 
 urlpatterns = [
-    path('Projects', ProjectDetails.as_view()),
-    path('Projects/<int:proj_id>', Projects.as_view()),
+    path('api/projects', Projects.as_view()),
+    path('api/projects/<int:proj_id>', ProjectDetails.as_view()),
     path('email', Email.as_view()),
 ]

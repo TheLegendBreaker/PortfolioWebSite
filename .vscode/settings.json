@@ -1,4 +1,4 @@
 {
     "python.pythonPath": "~/Documents/prgramming/coding_dojo/personal_projects/enviornments/djongoAngularPy3Env/Scripts",
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "autopep8"
 }

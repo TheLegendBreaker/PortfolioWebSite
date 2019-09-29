@@ -40,7 +40,7 @@ export class LandingDLL {
   insertByPlace(project: LandingNode): void {
     let current = this.head;
 
-    while (current.next !== null) {
+    while (current.next !== this.head) {
       // check if at the right place in list
       if (current.place === project.place) {
         // grab old references
@@ -60,24 +60,6 @@ export class LandingDLL {
     }
   }
 
-  deleteByPlace(place: number): void {
-    let current = this.head;
-
-    while (current.next !== null) {
-      if (current.place === place) {
-        current.next.previous = current.previous;
-        const node = current.next;
-        current.next = null;
-        current.previous = null;
-        current = node;
-        current.place--;
-        continue;
-      } else if (current.place > place) {
-        current.place--;
-      }
-      current = current.next;
-    }
-  }
   getTheFirst(): LandingNode {
     return this.head;
   }

@@ -3,12 +3,14 @@ from django.views import View
 from django.core import mail
 import json
 
+def bodyFormatter(request):
+    return json.loads(request.body.decode())
+
 class Email(View):
     #contact me
     def post(self, request):
         # need to make sure the contact form follows the format needed for mail.send_mail()
-        email = request.body.decode()
-        email = json.loads(email);
+        email = bodyFormatter(request)
         email['subject'] = "email from " + email['from']
         email['to'] = 'hector.g.diaz.the.3rd@gmail.com'
         mail.send_mail(email['subject'], email['content'], email['from'], [email['to']])
