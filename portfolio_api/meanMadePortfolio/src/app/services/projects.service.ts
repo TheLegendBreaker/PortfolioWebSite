@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as DLL from '../interface';
 import { Subject } from 'rxjs';
+import { ProjectsDllService } from './projects-dll.service';
+import { ProjectsNode } from '../interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,6 @@ export class ProjectsService {
   displayBlurb$ = this.blurbSource.asObservable();
   useLinks$ = this.linkSource.asObservable();
 
-  que: DLL.ProjectsNode[] = [];
   display: DLL.ProjectsNode;
 
   screen1 = true;
@@ -25,7 +26,7 @@ export class ProjectsService {
   direction: string;
   blurbDirection: string;
 
-  constructor() {}
+  constructor(private readonly dllServ: ProjectsDllService) {}
 
   private chooseImage() {
     this.imageSource.next([
@@ -45,35 +46,27 @@ export class ProjectsService {
       this.blurbDirection,
     ]);
   }
-  private initShowReel(direction: string): void {
-    let dll = new DLL.ProjectsDLL();
-    dll = dll.DummyDLL();
-
+  initContent(projects: ProjectsNode[]) {
+    this.display = this.dllServ.initLandingReelContent(projects);
+  }
+  private initDisplay(direction: string): void {
     if (direction === 'Up') {
-      this.display = dll.getTheFirst();
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotateNext();
     } else {
-      this.display = dll.getTheLast();
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotatePervious();
     }
   }
 
   private rotateShowReel(direction: string): void {
     if (this.display === undefined) {
-      this.initShowReel(direction);
+      this.initDisplay(direction);
       return;
     }
 
     if (direction === 'Up') {
-      this.display = this.que[1];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotateNext();
     } else {
-      this.display = this.que[0];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotatePervious();
     }
   }
   scroll(direction: string): void {

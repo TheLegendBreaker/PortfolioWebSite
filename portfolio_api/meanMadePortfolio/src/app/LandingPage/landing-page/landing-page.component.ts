@@ -1,9 +1,12 @@
-import { ProjectsService } from 'src/app/services/projects.service';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
-import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
-import { RouteAnimationsService } from 'src/app/services/route-animations.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { RouteAnimationsService } from 'src/app/services/route-animations.service';
+import { tooltipConfig } from 'src/app/toolTipConfig/toolTip.config.delay';
+import { ProjectApiService } from 'src/app/services/project-api.service';
+import { ProjectsService } from 'src/app/services/projects.service';
+import { Json } from 'src/app/interface';
 
 @Component({
   selector: 'app-landing-page',
@@ -15,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
   // set up a property to display the project blurb
-  blurb: string;
+
   lastDirection: string;
   links: any[] = [];
   disable = false;
@@ -23,20 +26,28 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   autoNav: any;
   disabler: any;
   constructor(
-    private readonly projServ: ProjectsService,
     private readonly routeAnimationServ: RouteAnimationsService,
+    private readonly projApiServ: ProjectApiService,
+    private readonly projServ: ProjectsService,
     private readonly router: Router
   ) {}
 
   ngOnInit() {
+    this.initProjects();
     this.links = [`https://github.com/TheLegendBreaker`];
     this.projServ.useLinks$.subscribe(links => {
       this.links = links;
     });
   }
-
+  private initProjects(): void {
+    this.projApiServ.getProjects().subscribe((projects: Json) => {
+      this.projServ.initContent(projects.projects),
+        errors => {
+          console.log(errors);
+        };
+    });
+  }
   scroll(direction: string) {
-    console.log('scroll on landing page');
     clearInterval(this.autoNav);
     this.autoScroll();
     if (!this.disable) {
@@ -72,11 +83,12 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   private clearDisable(): void {
     clearInterval(this.disabler);
   }
-  ngOnDestroy() {
-    clearInterval(this.autoNav);
-  }
   private navToResume() {
     this.routeAnimationServ.changeState();
     this.router.navigateByUrl('/portfolio/resume');
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.autoNav);
   }
 }
