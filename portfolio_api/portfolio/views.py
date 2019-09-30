@@ -31,7 +31,7 @@ class ProjectDetails(View):
             'image' : project.image,
             'links' : project.links,
         }
-        return JsonResponse({'get_one': 'working', project.title: formatted})
+        return JsonResponse({'get_one': 'working', 'project': formatted})
         
     # def post(self, request, proj_id, token):
     #     return JsonResponse({'post_one':'working'})

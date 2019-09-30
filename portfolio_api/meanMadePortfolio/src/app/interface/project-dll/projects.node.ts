@@ -1,7 +1,7 @@
-export class LandingNode {
+export class ProjectsNode {
   // basic DLL set up
-  previous: any;
-  next: any;
+  previous?: ProjectsNode;
+  next?: ProjectsNode;
   // this will help a met enter in new projects in a defined order;
   place: number;
   // populated by info from the db

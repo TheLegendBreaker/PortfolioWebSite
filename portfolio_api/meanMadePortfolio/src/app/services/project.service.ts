@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as DLL from '../interface/index';
 import { Subject } from 'rxjs';
-import { LandingNode } from '../interface/index';
+
+import * as DLL from '../interface/index';
+import { ProjectNode } from '../interface/index';
+import { DllService } from './dll.service';
 
 // eventually split into projAnimation.service
 // and projContent.service
@@ -13,38 +15,31 @@ export class ProjectService {
   private blurbSource = new Subject<any[]>();
   private linkSource = new Subject<any[]>();
   private directionSource = new Subject<string>();
-
   setDirection$ = this.directionSource.asObservable();
   displayImage$ = this.imageSource.asObservable();
   displayBlurb$ = this.blurbSource.asObservable();
   useLinks$ = this.linkSource.asObservable();
 
-  que: DLL.LandingNode[] = [];
-  display: DLL.LandingNode;
+  display: DLL.ProjectsNode;
 
-  dll = new DLL.LandingDLL();
   // boolean to help the reel and blurb decide which of its screens gets content
   screen1 = false;
   calDisplayed = true;
 
   direction: string;
-  constructor() {}
+  constructor(private readonly dllServ: DllService) {}
 
-  initShowReel(project: LandingNode): void {
-    this.display = project;
-    this.que[0] = this.display.previous;
-    this.que[1] = this.display.next;
+  initShowReel(project: ProjectNode): DLL.ProjectsNode {
+    this.display = this.dllServ.initShowReelContent(project);
+    this.chooseBlurb();
+    return this.display;
   }
 
   private rotateLandingReel(direction: string): void {
     if (direction === 'Right') {
-      this.display = this.que[1];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotatePervious();
     } else {
-      this.display = this.que[0];
-      this.que[0] = this.display.previous;
-      this.que[1] = this.display.next;
+      this.display = this.dllServ.rotateNext();
     }
   }
 
@@ -128,10 +123,13 @@ export class ProjectService {
     let isEnd: boolean;
 
     if (direction === 'Left') {
-      isEnd = this.que[0].next.place === 0;
+      isEnd = this.display.next.place === 0;
     } else if (direction === 'Right') {
-      isEnd = this.que[1].place === 0;
+      isEnd = this.display.next.previous.place === 0;
     }
     return (isEnd = isEnd ? !this.calDisplayed : false);
+  }
+  resetContent(): void {
+    this.dllServ.reset();
   }
 }

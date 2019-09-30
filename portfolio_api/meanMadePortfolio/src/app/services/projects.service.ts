@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as DLL from '../interface/index';
+import * as DLL from '../interface';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -16,8 +16,8 @@ export class ProjectsService {
   displayBlurb$ = this.blurbSource.asObservable();
   useLinks$ = this.linkSource.asObservable();
 
-  que: DLL.LandingNode[] = [];
-  display: DLL.LandingNode;
+  que: DLL.ProjectsNode[] = [];
+  display: DLL.ProjectsNode;
 
   screen1 = true;
 
@@ -46,7 +46,7 @@ export class ProjectsService {
     ]);
   }
   private initShowReel(direction: string): void {
-    let dll = new DLL.LandingDLL();
+    let dll = new DLL.ProjectsDLL();
     dll = dll.DummyDLL();
 
     if (direction === 'Up') {

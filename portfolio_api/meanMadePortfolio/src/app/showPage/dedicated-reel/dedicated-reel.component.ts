@@ -1,15 +1,9 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, style, state } from '@angular/animations';
-import { ProjectService } from 'src/app/services/project.service';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
+import { ProjectService } from 'src/app/services/project.service';
 import { Transitions } from './dedicated-reel.transition';
 
 @Component({
@@ -41,7 +35,6 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
 
   que: any[] = [];
   display: any[] = [];
-  links: any[] = [];
 
   subscription: Subscription;
 
@@ -61,12 +54,11 @@ export class DedicatedReelComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit() {
-    // do something with resolver data
-    const project = this.route.snapshot.data.projects;
-    console.log(`here is the project`, project);
-    this.display = [project.id, project.image];
+    const projects = this.route.snapshot.data.projects;
+    console.log(`here is the project`, projects);
+    const display = this.projServ.initShowReel(projects.project);
 
-    this.projServ.initShowReel(project);
+    this.display = [display.id, display.image];
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

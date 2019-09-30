@@ -1,9 +1,7 @@
-import { LandingDLL } from './landing-pg-dll/landing.doublyLinkList';
-import { ShowDLL } from './show-pg-dll/show.doublyLinkList';
+import { ProjectsDLL } from './project-dll/project.doublyLinkList';
 import { Email } from './email.interface';
 
-export const interfaces = [LandingDLL, ShowDLL, Email];
+export const interfaces = [ProjectsDLL, Email];
 
-export * from './landing-pg-dll/landing.doublyLinkList';
-export * from './show-pg-dll/show.doublyLinkList';
+export * from './project-dll/project.doublyLinkList';
 export * from './email.interface';

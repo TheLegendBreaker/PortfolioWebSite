@@ -1,9 +1,11 @@
-import { LandingNode } from './project.node';
-export { LandingNode } from './project.node';
+import { ProjectNode } from './project.node';
+import { ProjectsNode } from './projects.node';
+export { ProjectNode } from './project.node';
+export { ProjectsNode } from './projects.node';
 
-export class LandingDLL {
-  head: any;
-  tail: any;
+export class ProjectsDLL {
+  head: ProjectsNode;
+  tail: ProjectsNode;
 
   constructor() {
     this.head = null;
@@ -12,15 +14,15 @@ export class LandingDLL {
   printAllTitles() {
     let current = this.head;
     while (current != null) {
-      console.log(current.titled);
+      console.log(current.title);
       current = current.next;
     }
   }
   // makes a new dll out of a list of projects
   // almost a second contructor.
   // MUST ONLY USE ON NEW LIST.
-  populateNewList(projects: LandingNode[]): void {
-    // projects place must match list index to LandingNode.place
+  populateNewList(projects: ProjectsNode[]): void {
+    // projects place must match list index to ProjectNode.place
     let current = this.head;
     for (const project of projects) {
       if (this.head === null) {
@@ -36,8 +38,33 @@ export class LandingDLL {
     this.head.previous = this.tail;
     this.tail.next = this.head;
   }
+  projectPopulateList(project: ProjectNode): void {
+    // projects place must match list index to ProjectNode.place
+    let current = this.head;
+    for (let i = 0; i < project.blurb.length; i++) {
+      const node = new ProjectsNode(
+        i,
+        project.id,
+        project.title,
+        project.blurb[i],
+        project.image[i],
+        project.links
+      );
+      if (this.head === null) {
+        this.head = node;
+        current = this.head;
+        continue;
+      }
+      current.next = node;
+      current.next.previous = current;
+      current = current.next;
+    }
+    this.tail = current;
+    this.head.previous = this.tail;
+    this.tail.next = this.head;
+  }
 
-  insertByPlace(project: LandingNode): void {
+  insertByPlace(project: ProjectsNode): void {
     let current = this.head;
 
     while (current.next !== this.head) {
@@ -60,17 +87,17 @@ export class LandingDLL {
     }
   }
 
-  getTheFirst(): LandingNode {
+  getTheFirst(): ProjectsNode {
     return this.head;
   }
-  getTheLast(): LandingNode {
+  getTheLast(): ProjectsNode {
     return this.tail;
   }
 
-  private DummyProjs(): LandingNode[] {
-    const projects: LandingNode[] = [];
+  private DummyProjs(): ProjectsNode[] {
+    const projects: ProjectsNode[] = [];
     for (let i = 0; i < 4; i++) {
-      const project: LandingNode = new LandingNode(
+      const project: ProjectsNode = new ProjectsNode(
         i,
         i,
         `PROJECT ${i}`,
@@ -84,8 +111,8 @@ export class LandingDLL {
     return projects;
   }
 
-  DummyDLL(): LandingDLL {
-    const dll = new LandingDLL();
+  DummyDLL(): ProjectsDLL {
+    const dll = new ProjectsDLL();
     dll.populateNewList(this.DummyProjs());
     return dll;
   }

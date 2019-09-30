@@ -1,17 +1,18 @@
-import { LandingDLL, LandingNode } from '../interface/index';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { ProjectNode } from '../interface';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectApiService {
-  private projectSource = new Subject<LandingNode>();
-  private dll = new LandingDLL();
-  getProjects = this.projectSource.asObservable();
-  constructor() {}
-  getProject(): void {
-    this.dll = this.dll.DummyDLL();
-    this.projectSource.next(this.dll.getTheFirst());
+  constructor(private readonly http: HttpClient) {}
+  getProjects(): Observable<object[]> {
+    return this.http.get<object[]>('api/projects');
+  }
+  getProject(id: Params): Observable<ProjectNode> {
+    return this.http.get<ProjectNode>(`api/projects/${id}`);
   }
 }

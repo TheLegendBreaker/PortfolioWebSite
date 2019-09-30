@@ -89,6 +89,7 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/portfolio/contact');
   }
   ngOnDestroy(): void {
+    this.projServ.resetContent();
     this.projServ.direction = null;
     clearInterval(this.autoNav);
   }
