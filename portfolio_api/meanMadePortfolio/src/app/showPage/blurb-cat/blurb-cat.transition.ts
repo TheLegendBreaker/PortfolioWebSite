@@ -12,8 +12,8 @@ export const Transitions = {
       animate(
         '500ms',
         keyframes([
-          style({ color: '#000000', offset: 0 }),
-          style({ color: '#00000000', offset: 1 }),
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0, offset: 1 }),
         ])
       ),
     ]);
@@ -24,12 +24,11 @@ export const Transitions = {
         '500ms',
         keyframes([
           style({
-            background: '#00000000',
-            color: '#00000000',
+            opacity: 0,
             bottom: '310px',
             offset: 0,
           }),
-          style({ background: '#80b3ff', color: '#000000', offset: 1 }),
+          style({ opacity: 1, offset: 1 }),
         ])
       ),
     ]);
@@ -39,8 +38,8 @@ export const Transitions = {
       animate(
         '500ms',
         keyframes([
-          style({ background: '#80b3ff', color: '#000000', offset: 0 }),
-          style({ background: '#00000000', color: '#00000000', offset: 1 }),
+          style({ opacity: 1, offset: 0 }),
+          style({ opacity: 0, offset: 1 }),
         ])
       ),
     ]);
@@ -51,12 +50,11 @@ export const Transitions = {
         '500ms',
         keyframes([
           style({
-            background: '#00000000',
-            color: '#00000000',
+            opacity: 0,
             bottom: '310px',
             offset: 0,
           }),
-          style({ background: '#80b3ff', color: '#000000', offset: 1 }),
+          style({ opacity: 1, offset: 1 }),
         ])
       ),
     ]);

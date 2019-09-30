@@ -12,6 +12,9 @@ article {
 
 section {
   position: relative;
+  /* display: inline-block;
+  height: 156.25px;
+  overflow: none; */
 }
 
 .screen2 {
@@ -19,6 +22,6 @@ section {
 }
 
 p {
-  height: 115px;
+  height: 133.67px;
   width: 100%;
 }

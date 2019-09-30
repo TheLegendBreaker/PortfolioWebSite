@@ -27,6 +27,7 @@ export class CallToActionComponent implements OnInit, OnDestroy {
     this.subscription = projServ.setDirection$.subscribe(
       (direction: string) => {
         this.direction = direction;
+        console.log('cta direction', this.direction);
       }
     );
   }

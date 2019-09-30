@@ -1,15 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  state,
-  style,
-  trigger,
-  animate,
-  keyframes,
-  transition,
-} from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { state, style, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { Transitions } from './dedicated-display-content.transition';
 
@@ -56,10 +49,11 @@ export class DedicatedDisplayContentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit(): void {
-    console.log('HERE IS SCREEN', this.projServ.screen1);
-    const project = this.route.snapshot.data.projects;
-    console.log(`here is the project`, project);
-    this.display = [project.id, project.title, project.blurb];
+    const projects = this.route.snapshot.data.projects;
+    console.log(`here is the project`, projects);
+    const display = this.projServ.initShowReel(projects.project);
+
+    this.display = [display.id, display.title, display.blurb];
   }
   ngOnDestroy(): void {
     this.projServ.screen1 = false;

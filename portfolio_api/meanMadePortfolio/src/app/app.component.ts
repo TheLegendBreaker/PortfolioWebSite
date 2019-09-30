@@ -33,11 +33,6 @@ export class AppComponent implements OnInit {
     );
   }
   routeAnimationState(): string {
-    console.log(
-      'route animation state change',
-      this.routeAnimationServ.getState()
-    );
-
     return this.routeAnimationServ.getState();
   }
 }

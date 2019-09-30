@@ -24,7 +24,7 @@ export class ProjectService {
 
   // boolean to help the reel and blurb decide which of its screens gets content
   screen1 = false;
-  calDisplayed = true;
+  calDisplayed = false;
 
   direction: string;
   constructor(private readonly dllServ: DllService) {}
@@ -37,9 +37,9 @@ export class ProjectService {
 
   private rotateLandingReel(direction: string): void {
     if (direction === 'Right') {
-      this.display = this.dllServ.rotatePervious();
-    } else {
       this.display = this.dllServ.rotateNext();
+    } else {
+      this.display = this.dllServ.rotatePervious();
     }
   }
 
@@ -119,12 +119,11 @@ export class ProjectService {
     }
   }
   isEnd(direction: string): boolean {
-    // what to do when this is true?
     let isEnd: boolean;
 
-    if (direction === 'Left') {
+    if (direction === 'Right') {
       isEnd = this.display.next.place === 0;
-    } else if (direction === 'Right') {
+    } else if (direction === 'Left') {
       isEnd = this.display.next.previous.place === 0;
     }
     return (isEnd = isEnd ? !this.calDisplayed : false);

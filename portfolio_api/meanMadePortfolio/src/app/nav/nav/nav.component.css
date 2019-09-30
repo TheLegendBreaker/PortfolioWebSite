@@ -1,10 +1,11 @@
 .nav-icon {
+  z-index: 100;
   width: 50px;
   height: 50px;
 
   position: absolute;
   top: 40px;
-  left: 1450px;
+  left: 1400px;
 }
 .menu {
   width: 150px;
