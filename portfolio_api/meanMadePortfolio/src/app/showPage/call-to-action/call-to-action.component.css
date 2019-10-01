@@ -1,13 +1,16 @@
 .send-resume {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   /* margin-left: 24%; */
 }
 h1 {
-  vertical-align: middle;
+  margin-top: 40px;
   display: inline-block;
 }
 section {
   display: inline-block;
+}
+button {
+  margin: 0 30px;
 }
 .screen {
   padding-top: 20px;
@@ -23,9 +26,10 @@ section {
 .next {
   vertical-align: middle;
   display: inline-block;
-  width: 260px;
+  width: 251px;
   height: 95px;
   border: black solid 15px;
+  margin-left: 60px;
 
   text-align: left;
   background-color: #093d8b;
@@ -33,15 +37,22 @@ section {
   outline: none;
 }
 .next span {
-  padding: 0 7px;
+  padding: 1px 7px;
   position: relative;
   bottom: 15px;
-  font-size: 34px;
+  font-size: 32px;
 
   border-right: solid black 15px;
   border-bottom: solid black 15px;
 }
-
+button.next:active {
+  text-align: center;
+}
+button.next:active span {
+  border: solid black 10px;
+  font-weight: bold;
+  bottom: 0;
+}
 .contact {
   vertical-align: middle;
   display: inline-block;
@@ -50,7 +61,7 @@ section {
   border: black solid 15px;
 
   text-align: left;
-  background-color: #093d8b;
+  background-color: #a53535;
   border-radius: 20px;
   outline: none;
 }
@@ -63,28 +74,15 @@ section {
   border-right: solid black 15px;
   border-bottom: solid black 15px;
 }
-.home {
-  vertical-align: middle;
-  display: inline-block;
-  width: 165px;
-  height: 95px;
-  border: black solid 15px;
-
-  text-align: left;
-  background-color: #a53535;
-  border-radius: 20px;
-  outline: none;
+button.contact:active {
+  text-align: center;
 }
-.home span {
-  padding: 0 7px;
-  position: relative;
-  bottom: 15px;
-  font-size: 34px;
-
-  color: white;
-  border-right: solid black 15px;
-  border-bottom: solid black 15px;
+button.contact:active span {
+  border: solid black 10px;
+  font-weight: bold;
+  bottom: 0;
 }
-div {
-  margin: 15px 0;
+h2 {
+  font-size: 60px;
+  font-weight: lighter;
 }

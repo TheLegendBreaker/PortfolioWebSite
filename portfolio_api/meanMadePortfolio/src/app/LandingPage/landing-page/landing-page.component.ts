@@ -84,7 +84,9 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.routeAnimationServ.changeState();
     this.router.navigateByUrl('/portfolio/resume');
   }
-
+  private pause() {
+    clearInterval(this.autoNav);
+  }
   ngOnDestroy() {
     clearInterval(this.autoNav);
   }

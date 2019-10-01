@@ -1,22 +1,23 @@
-<div class="screen display" [@callToAction]="direction">
-  <h1>Junior Full Stack Web Developer in Boise</h1>
-
-  <section>
+<div class="screen" [@callToAction]="direction">
+  <div>
     <app-send-resume-button class="send-resume"></app-send-resume-button>
-    <div>
-      <button class="next">
-        <span class="blue">Next Project</span>
-      </button>
-    </div>
-    <div>
-      <button class="contact">
-        <span class="blue">Contact</span>
-      </button>
-    </div>
-    <div>
-      <button class="home">
-        <span class="red">Home</span>
-      </button>
-    </div>
-  </section>
+    <button class="next" (click)="navToNext()">
+      <span class="blue">Next Project</span>
+    </button>
+    <button class="contact" (click)="navToContact()">
+      <span class="red">Contact</span>
+    </button>
+  </div>
+  <h1>
+    Junior Full Stack Web <br />
+    Developer in Boise
+  </h1>
+  <h2>Hector G Diaz</h2>
+  <small
+    ><a
+      href="https://mail.google.com/mail/u/?authuser=hector.g.diaz.the.3rd@gmail.com"
+      target="_blank"
+      >hector.g.diaz.the.3rd@gmail.com</a
+    ></small
+  >
 </div>
