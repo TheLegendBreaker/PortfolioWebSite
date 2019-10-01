@@ -5,9 +5,7 @@ export const focusTransitions = {
     return transition('* => hovered', [
       animate(
         '100ms',
-        keyframes([
-          style({ left: '22.5px', height: '425px', width: '625px', offset: 1 }),
-        ])
+        keyframes([style({ transform: 'scale(1.1)', offset: 1 })])
       ),
     ]);
   },
@@ -16,8 +14,8 @@ export const focusTransitions = {
       animate(
         '100ms',
         keyframes([
-          style({ left: '22.5px', height: '425px', width: '625px', offset: 0 }),
-          style({ left: '35px', height: '400px', width: '600px', offset: 1 }),
+          style({ transform: 'scale(1.1)', offset: 0 }),
+          style({ transform: 'scale(1)', offset: 1 }),
         ])
       ),
     ]);

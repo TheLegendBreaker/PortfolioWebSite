@@ -32,10 +32,7 @@ import { RouteAnimationsService } from 'src/app/services/route-animations.servic
       Transitions.screen2DownD(),
     ]),
     trigger('hover', [
-      state(
-        'hovered',
-        style({ left: '22.5px', height: '425px', width: '625px' })
-      ),
+      state('hovered', style({ transform: 'scale(1.1)' })),
       focusTransitions.hovered(),
       focusTransitions.unHovered(),
     ]),
