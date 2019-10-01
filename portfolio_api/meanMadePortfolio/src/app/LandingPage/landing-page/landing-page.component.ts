@@ -41,10 +41,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
   private initProjects(): void {
     this.projApiServ.getProjects().subscribe((projects: Json) => {
-      this.projServ.initContent(projects.projects),
-        errors => {
-          console.log(errors);
-        };
+      this.projServ.initContent(projects.projects);
     });
   }
   scroll(direction: string) {

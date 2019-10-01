@@ -31,6 +31,12 @@ import { RouteAnimationsService } from 'src/app/services/route-animations.servic
       Transitions.screen2DownQ(),
       Transitions.screen2DownD(),
     ]),
+    trigger('intro', [
+      state('Next', style({ left: '-664px', bottom: '460px' })),
+      state('Pervious', style({ left: '-664px', bottom: '460px' })),
+      Transitions.introNextQue(),
+      Transitions.introPerviousQue(),
+    ]),
     trigger('hover', [
       state('hovered', style({ transform: 'scale(1.1)' })),
       focusTransitions.hovered(),
@@ -51,6 +57,7 @@ export class ReelComponent implements OnInit, OnDestroy {
 
   screen1Hover: string;
   screen2Hover: string;
+  screenIntro = 'Displayed';
 
   subscription: Subscription;
 
@@ -60,34 +67,32 @@ export class ReelComponent implements OnInit, OnDestroy {
     private readonly routerAnimationServ: RouteAnimationsService
   ) {
     this.subscription = projServ.displayImage$.subscribe(image => {
+      this.introState(image[2]);
       // make sure the correct prop gets the newly displaying project
       if (this.projServ.screen1) {
         this.display = image;
-        console.log('display if triggerd', this.display);
         this.screen = image[2];
       } else {
-        console.log('que if triggerd');
         this.que = image;
-        this.link = `/portfolio/project/${this.que[0]}`;
         this.screen = image[2];
       }
     });
   }
   ngOnInit() {
     // set up display with welcome information.
-    this.display = [
-      null,
-      `I am a problem solver who is consistently improving the systems I work with. I have brought multiple companies further with these skills. this is my portfolio website and its job is to give working of these skills.`,
-      `I have a background in graphic design as freelancer. I have managed independent contracts and produced work that exceeds expectations within a deadline. My graphic design experience also gives me a  creative perspective that helps me rethink challenges and come up with innovative solutions.`,
-      `If given the right opportunity at the right company I will exceed your expectations. Let's get together and see if we would be a good fit for each other. `,
-    ];
-
-    this.link = `/portfolio/resume`;
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
+  private introState(direction: string): void {
+    const introState = {
+      slideUptoQue: 'Pervious',
+      slideDowntoQue: 'Next',
+      slideUptoDisplay: 'Pervious',
+      slideDowntoDisplay: 'Next',
+    };
+    this.screenIntro = introState[direction];
+  }
   hovered() {
     this.screen1Hover = 'hovered';
   }
@@ -100,19 +105,16 @@ export class ReelComponent implements OnInit, OnDestroy {
   screen2UnHovered() {
     this.screen2Hover = 'unhovered';
   }
-
+  private navToResume(): void {
+    this.routerAnimationServ.changeState();
+    this.router.navigateByUrl(`/portfolio/resume`);
+  }
   private navToProjectDisplay(): void {
+    this.routerAnimationServ.changeState();
     this.router.navigateByUrl(`/portfolio/project/${this.display[0]}`);
   }
   private navToProjectQue(): void {
-    this.router.navigateByUrl(this.link);
-  }
-  private navToProject(screen: string): void {
     this.routerAnimationServ.changeState();
-    if (screen === 'display') {
-      this.navToProjectDisplay();
-    } else {
-      this.navToProjectQue();
-    }
+    this.router.navigateByUrl(`/portfolio/project/${this.que[0]}`);
   }
 }

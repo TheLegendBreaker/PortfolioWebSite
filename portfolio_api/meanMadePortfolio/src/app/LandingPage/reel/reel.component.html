@@ -4,7 +4,7 @@
     matTooltipPosition="above"
     id="screen1"
     [@screen1]="screen"
-    (click)="navToProject(display)"
+    (click)="navToProjectDisplay()"
     [@hover]="screen1Hover"
     (mouseenter)="hovered()"
     (mouseleave)="unHovered()"
@@ -14,8 +14,6 @@
       src="{{ display[1] }}"
       alt="{{ display[1] }}"
     />
-    <!-- <img *ngIf="!display[2]" src="{{ screen1[1] }}" alt="{{ screen1[1] }}" /> -->
-    <!-- <app-display[1]-project></app-display[1]-project> -->
   </div>
 
   <div
@@ -23,23 +21,43 @@
     matTooltipPosition="above"
     id="screen2"
     [@screen2]="screen"
-    (click)="navToProject(que)"
+    (click)="navToProjectQue()"
     [@hover]="screen2Hover"
     (mouseenter)="screen2Hovered()"
     (mouseleave)="screen2UnHovered()"
   >
     <img *ngIf="que[0]" src="{{ que[1] }}" alt="{{ que[1] }}" />
-    <!-- <img *ngIf="!display[2]" src="{{ screen2[1] }}" alt="{{ screen2[1] }}" /> -->
-    <div id="elevator-pitch" *ngIf="display[0] === null">
-      <p>{{ display[1] }}</p>
-      <br />
-      <p>{{ display[2] }}</p>
-      <br />
-      <p>
-        <b>{{ display[3] }}</b>
-      </p>
-    </div>
-    <!-- <app-display-project></app-display-project> -->
-    screen 2
+  </div>
+  <div
+    matTooltip="click to check out hector's resume"
+    matTooltipPosition="above"
+    id="intro"
+    [@intro]="screenIntro"
+    (click)="navToResume()"
+    [@hover]="screen2Hover"
+    (mouseenter)="screen2Hovered()"
+    (mouseleave)="screen2UnHovered()"
+  >
+    <p class="top">
+      I am a problem solver who is consistently improving the systems I work
+      with. I have brought multiple companies further with these skills. this is
+      my portfolio website and its job is to give working of these skills.
+    </p>
+    <br />
+    <p>
+      I have a background in graphic design as freelancer. I have managed
+      independent contracts and produced work that exceeds expectations within a
+      deadline. My graphic design experience also gives me a creative
+      perspective that helps me rethink challenges and come up with innovative
+      solutions.
+    </p>
+    <br />
+    <p>
+      <b
+        >If given the right opportunity at the right company I will exceed your
+        expectations. Let's get together and see if we would be a good fit for
+        each other.
+      </b>
+    </p>
   </div>
 </div>

@@ -38,6 +38,19 @@ small {
   border-radius: 3px;
   border: black solid 15px;
 }
+#intro {
+  height: 400px;
+  width: 600px;
+  margin: 30px 0px;
+
+  position: relative;
+  left: 35px;
+  bottom: 920px;
+
+  background-color: white;
+  border-radius: 3px;
+  border: black solid 15px;
+}
 
 img {
   height: 100%;
@@ -45,6 +58,9 @@ img {
 }
 
 /* welcome content styling */
+.top {
+  margin-top: 12%;
+}
 p {
   width: 550px;
   display: inline-block;

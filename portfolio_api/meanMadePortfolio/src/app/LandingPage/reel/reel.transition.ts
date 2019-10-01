@@ -1,4 +1,10 @@
-import { keyframes, animate, transition, style } from '@angular/animations';
+import {
+  keyframes,
+  animate,
+  transition,
+  style,
+  AnimationTransitionMetadata,
+} from '@angular/animations';
 
 export const Transitions = {
   screen1UpQ() {
@@ -83,6 +89,28 @@ export const Transitions = {
         keyframes([
           style({ left: '35px', bottom: '960px', offset: 0 }),
           style({ left: '35px', bottom: '460px', offset: 1 }),
+        ])
+      ),
+    ]);
+  },
+  introNextQue(): AnimationTransitionMetadata {
+    return transition('Displayed => Next', [
+      animate(
+        '300ms',
+        keyframes([
+          style({ left: '35px', bottom: '920px', offset: 0 }),
+          style({ left: '35px', bottom: '400px', offset: 1 }),
+        ])
+      ),
+    ]);
+  },
+  introPerviousQue(): AnimationTransitionMetadata {
+    return transition('Displayed => Pervious', [
+      animate(
+        '300ms',
+        keyframes([
+          style({ left: '35px', bottom: '920px', offset: 0 }),
+          style({ left: '35px', bottom: '1420px', offset: 1 }),
         ])
       ),
     ]);
