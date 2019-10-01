@@ -34,13 +34,16 @@ export class ProjectService {
     this.chooseBlurb();
     return this.display;
   }
-
+  initBlurb(): DLL.ProjectsNode {
+    return this.dllServ.initBlurbContent();
+  }
   private rotateLandingReel(direction: string): void {
     if (direction === 'Right') {
       this.display = this.dllServ.rotateNext();
     } else {
       this.display = this.dllServ.rotatePervious();
     }
+    console.log('ROTATE REEL', this.display);
   }
 
   private chooseImage() {
@@ -69,6 +72,8 @@ export class ProjectService {
   }
 
   scroll(direction: string): void {
+    this.dllServ.getTheNames();
+    console.log('this.display', this.display, !this.calDisplayed);
     if (this.isEnd(direction)) {
       this.scrollAnimation(direction);
       this.ctaToDisplay(direction);
@@ -89,6 +94,9 @@ export class ProjectService {
     } else {
       this.normalScroll(direction);
     }
+    console.log(
+      '********************************************************************************'
+    );
   }
 
   private normalScroll(direction: string): void {

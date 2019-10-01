@@ -13,8 +13,10 @@ export class ProjectsDLL {
   }
   printAllTitles() {
     let current = this.head;
-    while (current != null) {
-      console.log(current.title);
+    let i = 0;
+    while (i !== 3) {
+      i++;
+      console.log(current.place);
       current = current.next;
     }
   }
@@ -53,11 +55,11 @@ export class ProjectsDLL {
       if (this.head === null) {
         this.head = node;
         current = this.head;
-        continue;
+      } else {
+        current.next = node;
+        current.next.previous = current;
+        current = current.next;
       }
-      current.next = node;
-      current.next.previous = current;
-      current = current.next;
     }
     this.tail = current;
     this.head.previous = this.tail;

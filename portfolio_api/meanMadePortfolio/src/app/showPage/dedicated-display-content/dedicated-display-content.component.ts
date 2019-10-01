@@ -49,9 +49,9 @@ export class DedicatedDisplayContentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit(): void {
-    const projects = this.route.snapshot.data.projects;
+    const projects = this.route.snapshot.data.projects.projects;
     console.log(`here is the project`, projects);
-    const display = this.projServ.initShowReel(projects.project);
+    const display = this.projServ.initBlurb();
 
     this.display = [display.id, display.title, display.blurb];
   }

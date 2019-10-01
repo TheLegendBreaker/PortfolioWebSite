@@ -21,6 +21,9 @@ export class DllService {
     this.initDisplay();
     return this.display;
   }
+  initBlurbContent(): DLL.ProjectsNode {
+    return this.display;
+  }
   rotateNext(): DLL.ProjectsNode {
     this.display = this.display.next;
     return this.display;
@@ -32,5 +35,8 @@ export class DllService {
   reset(): void {
     this.display = null;
     this.dll = new DLL.ProjectsDLL();
+  }
+  getTheNames(): void {
+    this.dll.printAllTitles();
   }
 }
