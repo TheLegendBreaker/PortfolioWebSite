@@ -10,16 +10,16 @@
     <app-landing-blurb> </app-landing-blurb>
   </div>
   <nav>
-    <button
-      class="primary-button blue"
-      [routerLink]="links[0]"
-      matTooltip="visit hector's github"
-    >
-      <span class="blue basic">G</span>
-    </button>
-    <button class="primary-button blue" matTooltip="visit hector's linkedin">
-      <span class="blue basic">L</span>
-    </button>
+    <a href="https://github.com/TheLegendBreaker" target="_blank">
+      <button class="primary-button blue" matTooltip="visit hector's github">
+        <span class="blue basic"> G</span>
+      </button>
+    </a>
+    <a href="https://linkedin.com/in/hector-diaz-64445b105" target="_blank">
+      <button class="primary-button blue" matTooltip="visit hector's linkedin">
+        <span class="blue basic"> L</span>
+      </button>
+    </a>
     <button class="primary-button blue" matTooltip="contact hector">
       <span class="blue basic">C</span>
     </button>
@@ -32,7 +32,7 @@
   <div (click)="scroll('Up')" class="direction-button-listener">
     <button class="up-button direction-button">up</button>
   </div>
-  <!-- also use an output main-content's content -->
+  <!-- also use ans output main-content's content -->
   <app-reel></app-reel>
   <div (click)="scroll('Down')" class="direction-button-listener">
     <button class="down-button direction-button">

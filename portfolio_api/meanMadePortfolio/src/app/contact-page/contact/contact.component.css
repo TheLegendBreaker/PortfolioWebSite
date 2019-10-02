@@ -52,10 +52,11 @@ aside {
 }
 
 nav {
+  text-align: center;
   padding: 30px 15px;
 }
 nav button {
-  margin: 0 7.2%;
+  margin: 0 20px;
 }
 aside div {
   height: 300px;

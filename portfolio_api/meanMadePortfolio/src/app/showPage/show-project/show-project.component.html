@@ -3,7 +3,10 @@
     <button class="left-button direction-button">left</button>
   </div>
 
-  <app-dedicated-reel (click)="pause()"></app-dedicated-reel>
+  <app-dedicated-reel
+    (click)="pause()"
+    matTooltip="click to pause reel"
+  ></app-dedicated-reel>
 
   <div (click)="scroll('Right')" class="direction-button-listener">
     <button disabled="disablePress" class="right-button direction-button">
@@ -15,13 +18,15 @@
   <app-dedicated-display-content></app-dedicated-display-content>
   <aside>
     <div class="stacked top">
-      <button
-        class="primary-button blue"
-        matTooltip="visit hector's github"
-        matTooltipPosition="above"
-      >
-        <span class="blue basic">G</span>
-      </button>
+      <a href="https://github.com/TheLegendBreaker" target="_blank">
+        <button
+          class="primary-button blue"
+          matTooltip="visit hector's github"
+          matTooltipPosition="above"
+        >
+          <span class="blue basic"> G</span>
+        </button>
+      </a>
     </div>
     <div class="stacked">
       <button

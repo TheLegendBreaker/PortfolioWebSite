@@ -7,13 +7,18 @@
   <button mat-menu-item (click)="navToHome()">Home</button>
   <button mat-menu-item (click)="navToContact()">Contact</button>
   <button mat-menu-item (click)="navToResume()">Resume</button>
-  <button mat-menu-item><a>GitHub</a></button>
-  <button mat-menu-item><a>LinkedIn</a></button>
+
+  <a href="https://github.com/TheLegendBreaker" target="_blank"
+    ><button mat-menu-item>GitHub</button>
+  </a>
+
+  <a href="https://linkedin.com/in/hector-diaz-64445b105" target="_blank"
+    ><button mat-menu-item>LinkedIn</button></a
+  >
   <p [matMenuTriggerFor]="subMenu" mat-menu-item>projects</p>
 </mat-menu>
 <mat-menu #subMenu="matMenu" class="menu" xPosition="before">
-  <button mat-menu-item (click)="navToProject(1)">project 1</button>
-  <button mat-menu-item>project 2</button>
-  <button mat-menu-item>project 2</button>
-  <button mat-menu-item>project 2</button>
+  <button *ngFor="let id of projIds" mat-menu-item (click)="navToProject(id)">
+    project {{ id }}
+  </button>
 </mat-menu>
