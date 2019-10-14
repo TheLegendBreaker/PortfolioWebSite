@@ -1,9 +1,10 @@
 main {
-  position: relative;
+  margin: auto;
 }
 div {
   display: inline-block;
   position: relative;
+  left: 97px;
   bottom: 930px;
   width: 1500px;
   background-image: url('../assets/router_animation/routeTransition.gif');
@@ -11,4 +12,5 @@ div {
   z-index: 110;
   opacity: 0;
   transform: scale(0);
+  /* background-repeat: no-repeat; */
 }

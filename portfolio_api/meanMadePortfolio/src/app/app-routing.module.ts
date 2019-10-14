@@ -20,14 +20,14 @@ const routes: Routes = [
         component: LandingPageComponent,
         pathMatch: 'full',
       },
-      {
-        path: 'project/:id',
-        component: ShowProjectComponent,
-        pathMatch: 'full',
-        resolve: {
-          projects: ProjectResolver,
-        },
-      },
+      // {
+      //   path: 'project/:id',
+      //   component: ShowProjectComponent,
+      //   pathMatch: 'full',
+      //   resolve: {
+      //     projects: ProjectResolver,
+      //   },
+      // },
       {
         path: 'resume',
         component: ShowResumeComponent,

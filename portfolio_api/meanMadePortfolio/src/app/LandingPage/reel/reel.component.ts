@@ -110,11 +110,11 @@ export class ReelComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/portfolio/resume`);
   }
   private navToProjectDisplay(): void {
-    this.routerAnimationServ.changeState();
-    this.router.navigateByUrl(`/portfolio/project/${this.display[0]}`);
+    // this.routerAnimationServ.changeState();
+    // this.router.navigateByUrl(`/portfolio/project/${this.display[0]}`);
   }
   private navToProjectQue(): void {
-    this.routerAnimationServ.changeState();
-    this.router.navigateByUrl(`/portfolio/project/${this.que[0]}`);
+    // this.routerAnimationServ.changeState();
+    // this.router.navigateByUrl(`/portfolio/project/${this.que[0]}`);
   }
 }

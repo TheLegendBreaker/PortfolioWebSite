@@ -1,5 +1,11 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+body {
+  /* height: 10000px; */
+  background-image: linear-gradient(20deg, aqua, pink, navy);
+  background-repeat: no-repeat;
+}
+
 .panel > mat-dialog-container {
   padding: 0;
 }
@@ -106,10 +112,6 @@ button.primary-button:active span.basic {
   background: #ff5555;
 }
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
