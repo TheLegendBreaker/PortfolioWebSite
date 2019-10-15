@@ -1,8 +1,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  /* height: 10000px; */
-  background-image: linear-gradient(20deg, aqua, pink, navy);
+  background-image: linear-gradient(20deg, navy, pink, aqua);
   background-repeat: no-repeat;
 }
 

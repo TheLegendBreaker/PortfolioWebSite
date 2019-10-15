@@ -12,8 +12,8 @@ import { trigger, state, style } from '@angular/animations';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('routeAnimation', [
-      state('next', style({ opacity: 0, transform: 'scale(0)' })),
-      state('next1', style({ opacity: 0, transform: 'scale(0)' })),
+      state('next', style({ opacity: 0, transform: 'scale()' })),
+      state('next1', style({ opacity: 0, transform: 'scale()' })),
       Transitions.next1(),
       Transitions.next(),
     ]),

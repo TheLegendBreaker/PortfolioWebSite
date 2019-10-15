@@ -12,8 +12,8 @@ export const Transitions = {
       animate(
         '250ms',
         keyframes([
-          style({ opacity: 1, transform: 'scale(-1, 1)', offset: 0 }),
-          style({ opacity: 1, transform: 'scale(-1, 1)', offset: 0.9 }),
+          style({ opacity: 1, transform: 'scale(-.9, .9)', offset: 0 }),
+          style({ opacity: 1, transform: 'scale(-.9, .9)', offset: 0.9 }),
           style({ opacity: 0, offset: 1 }),
         ])
       ),
@@ -24,7 +24,7 @@ export const Transitions = {
       animate(
         '250ms',
         keyframes([
-          style({ opacity: 1, transform: 'scale(1)', offset: 0 }),
+          style({ opacity: 1, transform: 'scale(.9)', offset: 0 }),
           style({ opacity: 1, offset: 0.9 }),
           style({ opacity: 0, offset: 1 }),
         ])

@@ -1,10 +1,14 @@
 main {
   margin: auto;
+  transform: scale(0.9);
+  /* background-image: url('../assets/router_animation/routeTransition.gif');
+  background-size: 100%;
+  z-index: -1; */
 }
 div {
-  display: inline-block;
+  /* display: inline-block; */
   position: relative;
-  left: 97px;
+  /* left: 97px; */
   bottom: 930px;
   width: 1500px;
   background-image: url('../assets/router_animation/routeTransition.gif');

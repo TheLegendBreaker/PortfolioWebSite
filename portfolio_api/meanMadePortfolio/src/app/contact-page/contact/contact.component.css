@@ -67,6 +67,10 @@ aside div {
   background-color: #80b3ff;
 }
 
+aside div p {
+  vertical-align: middle;
+}
+
 .send {
   vertical-align: middle;
   display: inline-block;
