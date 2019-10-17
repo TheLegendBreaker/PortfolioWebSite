@@ -80,10 +80,15 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   private clearDisable(): void {
     clearInterval(this.disabler);
   }
-  private navToResume() {
+  private navToResume(): void {
     this.routeAnimationServ.changeState();
     this.router.navigateByUrl('/portfolio/resume');
   }
+  private navToContact() :void {
+    this.routeAnimationServ.changeState();
+    this.router.navigateByUrl('/portfolio/contact');
+  }
+
   private pause() {
     clearInterval(this.autoNav);
   }

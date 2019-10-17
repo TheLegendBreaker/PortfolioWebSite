@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+.vagrant
+bootstrap.sh
+VagrantFile
+bower_components/
+package-lock.json
 # compiled output
 /dist
 /tmp

@@ -117,4 +117,6 @@ export class ReelComponent implements OnInit, OnDestroy {
     // this.routerAnimationServ.changeState();
     // this.router.navigateByUrl(`/portfolio/project/${this.que[0]}`);
   }
+
+
 }
