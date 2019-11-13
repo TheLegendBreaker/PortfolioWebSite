@@ -58,4 +58,9 @@ article {
 
   background-color: white;
   border: #87decd solid 15px;
+  overflow: scroll;
+}
+
+img {
+  width: 100%;
 }

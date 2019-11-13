@@ -4,7 +4,7 @@
   [matMenuTriggerFor]="rootMenu"
 ></mat-icon>
 <mat-menu #rootMenu="matMenu" class="menu" xPosition="before">
-  <button mat-menu-item (click)="navToHome()">Home</button>
+  <button mat-menu-item (click)="navToHome()">Projects</button>
   <button mat-menu-item (click)="navToContact()">Contact</button>
   <button mat-menu-item (click)="navToResume()">Resume</button>
 
@@ -15,10 +15,10 @@
   <a href="https://linkedin.com/in/hector-diaz-64445b105" target="_blank"
     ><button mat-menu-item>LinkedIn</button></a
   >
-  <p [matMenuTriggerFor]="subMenu" mat-menu-item>projects</p>
+  <!-- <p [matMenuTriggerFor]="subMenu" mat-menu-item>projects</p> -->
 </mat-menu>
-<mat-menu #subMenu="matMenu" class="menu" xPosition="before">
+<!-- <mat-menu #subMenu="matMenu" class="menu" xPosition="before">
   <button *ngFor="let id of projIds" mat-menu-item (click)="navToProject(id)">
     project {{ id }}
   </button>
-</mat-menu>
+</mat-menu> -->
